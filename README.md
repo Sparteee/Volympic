@@ -65,7 +65,7 @@ Le plus simple est d'avoir des fixtures propres pour vos données, mais vous pou
 
 Sass est déjà installé dans ce projet à l'aide de [Webpack Encore](https://symfony.com/doc/6.4/frontend/encore/index.html).
 
-Pour utiliser Sass, il suffit de faire les commandes suivantes :
+Pour utiliser Sass, il suffit de faire la commande suivante pour compiler les assets :
 
 ```shell
 # lance la compilation et attend les modifications (à faire dans un terminal à part)
