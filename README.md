@@ -4,7 +4,7 @@
 
 Cet hackathon a pour but de vous faire progresser sur Symfony et ses technologies annexes.
 
-Le **thème** de cette année est : les jeux olympiques !
+Le **thème** de cette année est : **les jeux olympiques !**
 
 ![JO Paris 2024](images/LogoJOParis2024.svg)
 
@@ -26,6 +26,8 @@ Pour les WDI, il faut que vous ayez WSL, docker et docker compose installé sur 
 Vous pouvez compter sur les DFS pour vous aider à installer ce qu'il faut.
 
 Vous pouvez utiliser la partie prérequis de cette [documentation](https://gitlab.univ-lr.fr/ntrugeon/docker-symfony-wp-2022/-/blob/main/doc/MACHINEPERSOWINDOWS.md)
+
+Vous pouvez également utiliser les machines virtuelles Ubuntu 20.04 - R.192. Docker y est déjà installé... Par contre, attention, il n'y a pas de sauvegarde ! Pensez à push !
 
 ## Projet initial
 
