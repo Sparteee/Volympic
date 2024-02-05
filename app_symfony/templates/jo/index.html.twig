@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JOController!{% endblock %}
+
+{% block body %}
+
+<main role="main" style="margin: 30px">
+    <h1>Hello {{ JO }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/var/www/docker/hackathon/src/Controller/JoController.php'|file_link(0) }}">src/Controller/JoController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/var/www/docker/hackathon/templates/jo/index.html.twig'|file_link(0) }}">templates/jo/index.html.twig</a></code></li>
+    </ul>
+</main>
+{% endblock %}

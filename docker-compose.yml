@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+    db:
+        build:
+            context: docker/mariadb
+            args:
+                UID: ${USERID}
+        volumes:
+            - data_mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - "3306:3306"
+    php:
+        build:
+            context: docker/php${PHPVersion}-fpm
+            args:
+                TIMEZONE: ${TIMEZONE}
+                UID: ${USERID}
+        user: ${USERID}
+        volumes:
+            - ${APP_PATH}:/var/www/docker
+            
+    web:
+        build:
+            context: docker/apache
+            args:
+                UID: ${USERID}
+        ports:
+            - 8000:80
+            - 8443:443
+        volumes:
+            - ${APP_PATH}:/var/www/docker
+            - ./logs/apache2/:/usr/local/apache2/logs
+            - ./virtualhosts/:/usr/local/apache2/conf/sites
+    mailer:
+        image: schickling/mailcatcher
+        ports:
+            - 1080:1080
+    adminer:
+        image: adminer
+        ports:
+            - 8306:8080
+    nodejs:
+        image: node:20-alpine
+        volumes:
+            - ${APP_PATH}:/var/www/docker
+        working_dir: /var/www/docker
+        environment: 
+            NPM_CONFIG_LOGLEVEL: info
+        entrypoint: ["npm"]
+###> symfony/mercure-bundle ###
+    mercure:
+        image: dunglas/mercure
+        restart: unless-stopped
+        environment:
+            SERVER_NAME: ':80'
+            MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+            MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+        # Set the URL of your Symfony project (without trailing slash!) as value of the cors_origins directive
+            MERCURE_EXTRA_DIRECTIVES: |
+                cors_origins http://127.0.0.1:8000
+        # Comment the following line to disable the development mode
+        command: /usr/bin/caddy run --config /etc/caddy/Caddyfile.dev
+        ports:
+            - "3000:80"
+        volumes:
+            - mercure_data:/data
+            - mercure_config:/config
+###< symfony/mercure-bundle ###
+volumes:
+    data_mysql:
+    mercure_data:
+    mercure_config:
+ 
