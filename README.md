@@ -27,7 +27,8 @@ Vous pouvez compter sur les DFS pour vous aider à installer ce qu'il faut.
 
 Vous pouvez utiliser la partie prérequis de cette [documentation](https://gitlab.univ-lr.fr/ntrugeon/docker-symfony-wp-2022/-/blob/main/doc/MACHINEPERSOWINDOWS.md)
 
-Vous pouvez également utiliser les machines virtuelles Ubuntu 20.04 - R.192. Docker y est déjà installé... Par contre, attention, il n'y a pas de sauvegarde ! Pensez à push !
+Vous pouvez également utiliser les machines virtuelles Ubuntu 20.04 - R.192. Docker y est déjà installé... Par contre, attention, il n'y a pas de sauvegarde ! 
+Pensez à générer une nouvelle clé ssh et à push régulièrement !
 
 ## Projet initial
 
