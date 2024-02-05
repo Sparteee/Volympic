@@ -42,11 +42,16 @@ git clone https://gitlab.univ-lr.fr/hackathon2024/symfony/nom_equipe/stack-symfo
 cd hackathonsf
 make build
 make up
+# permet d'ajouter les dépendances node pour le sass
+make install
 make bash
 # vous êtes directement dans le bon dossier
 composer install
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
+exit
+# permet de créer les fichiers nécessaires au front
+make dev
 ```
 
 http://hackathon.localhost:8000
@@ -58,9 +63,8 @@ Sass est déjà installé dans ce projet à l'aide de [Webpack Encore](https://s
 Pour utiliser Sass, il suffit de faire les commandes suivantes :
 
 ```shell
-# dans le conteneur php (make bash)
-# cela permet de compiler à la sauvegarde le scss
-bin/console sass:build --watch
+# lance la compilation et attend les modifications (à faire dans un terminal à part)
+make watch
 ```
 
 Le fichier assets/styles/app.scss sert de point d'entrée. Les autres fichiers sont à placer dans le même dossier.
@@ -94,3 +98,5 @@ Au moins un des composants additionnels suivants devra être utilisé et justifi
 ## Validation de votre projet
 
 Jeudi 15 février à 11h, vous devrez présenter en 180 secondes maximum votre projet au jury.
+
+## Enjoy et soyez créatif !!!
