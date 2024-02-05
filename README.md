@@ -35,7 +35,7 @@ Pensez à générer une nouvelle clé ssh et à push régulièrement !
 - J'ai créé une nouvelle stack propre. 
 - Un sous groupe par équipe a été créé dans le groupe gitlab [hackathons 2024](https://gitlab.univ-lr.fr/hackathons2024/symfony). Au moins un membre de votre équipe est propriétaire de ce groupe et peut ajouter les autres membres de l'équipe.
 - Vous forkerez ce projet dans votre groupe pour travailler.
-- Faites en sorte qu'aucune image docker ne tourne avant de faire les make build, make up.
+- Faites en sorte qu'aucun conteneur docker ne tourne avant de faire les make build, make up.
 
 ## Installation sur votre poste
 
@@ -58,6 +58,10 @@ make dev
 ```
 
 http://hackathon.localhost:8000
+
+## Base de données
+
+Le plus simple est d'avoir des fixtures propres pour vos données, mais vous pouvez aussi utiliser les make dump et dumpInsert.
 
 ## Utilisation de Sass
 
