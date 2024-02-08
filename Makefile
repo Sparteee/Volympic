@@ -10,10 +10,10 @@ CURRENT_UID := $(shell id -u)
 export CURRENT_UID
 
 # Fonctions ayant besoins de paramètres, permet de les gérer, de les formater et de les utiliser
-SUPPORTED_COMMANDS := newSF newWP newPHP remove dump rename dumpInsert newClone
+SUPPORTED_COMMANDS := newSF newWP newPHP remove dump rename dumpInsert newClone add
 SUPPORTS_MAKE_ARGS := $(findstring $(firstword $(MAKECMDGOALS)), $(SUPPORTED_COMMANDS))
 ifneq "$(SUPPORTS_MAKE_ARGS)" ""
-  NOM := hackathon
+  NOM := $(wordlist 2,2,$(MAKECMDGOALS))
   NOM2 := $(wordlist 3,3,$(MAKECMDGOALS))
   $(eval $(NOM):;@:)
   NOM2 := $(subst :,\:,$(NOM2))
@@ -27,7 +27,7 @@ DK := USERID=$(CURRENT_UID) PHPVersion=$(PHP) $(DKC)
 CURRENT_TIME := $(shell date "+%Y%m%d%H%M")
 
 # .Phony permet de considérer les entrées suivantes comme des commandes et non des fichiers
-.PHONY: rename build preNew postNew newSF newPHP newWP up down cleanAll help removeSF removePHP removeWP check_clean bash dump list updatePhp dumpInsert newClone env restart watch dev build
+.PHONY: add rename build preNew postNew newSF newPHP newWP up down cleanAll help removeSF removePHP removeWP check_clean bash dump list updatePhp dumpInsert newClone env restart watch dev build
 
 # Si on tape just make, cela revient à make help
 .DEFAULT_GOAL := help
@@ -38,8 +38,16 @@ watch: ## Fait un npm run watch dans l'application symfony
 dev: ## Fait un npm run dev dans l'application symfony
 	@$(DK) run --rm nodejs run dev
 
-install: ## Fait un npm install dans l'application symfony
+install: ## Fait un composer install puis un npm install dans l'application symfony
+	@$(DK) exec php composer install
 	@$(DK) run --rm nodejs install
+
+add: ## ajoute un composant node au projet : ex : make add axios <==> npm install axios --save
+ifdef NOM
+	echo $(NOM)
+	@$(DK) run --rm nodejs install $(NOM) --save
+endif
+
 
 build: ## Construit les conteneurs comme docker-compose build
 	@$(DK) build
@@ -58,7 +66,7 @@ cleanAll: check_clean ## Donne les commandes pour tout supprimer
 	@echo "docker system prune --volumes -a"
 
 # utilisation de mysqldump pour générer le code sql dans le conteneur db
-dump: ## Sauvegarde la base associée au projet : make dump nom_du_projet
+dump: ## Sauvegarde la base associée au projet : make dump hackathon
 ifdef NOM
 	@make up
 	@$(DK) exec db mysqldump -p$(MYSQL_PASSWORD) $(NOM) > $(NOM)-$(CURRENT_TIME).sql
@@ -67,7 +75,7 @@ else
 	@echo "il faut ajouter le nom du projet à la commande"
 endif
 
-dumpInsert: ## Sauvegarde que les données la base associée au projet : make dumpInsert nom_du_projet
+dumpInsert: ## Sauvegarde que les données la base associée au projet : make dumpInsert hackathon
 ifdef NOM
 	@make up
 	@$(DK) exec db mysqldump --no-create-info --complete-insert --skip-lock-tables --single-transaction -p$(MYSQL_PASSWORD) $(NOM) > $(NOM)-$(CURRENT_TIME)Insert.sql

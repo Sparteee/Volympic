@@ -43,11 +43,11 @@ git clone https://gitlab.univ-lr.fr/hackathon2024/symfony/nom_equipe/stack-symfo
 cd hackathonsf
 make build
 make up
-# permet d'ajouter les dépendances node pour le sass
+# permet d'ajouter les dépendances php et node pour le sass
+# équivalent à composer install et npm install
 make install
 make bash
 # vous êtes directement dans le bon dossier
-composer install
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
 exit
@@ -74,7 +74,7 @@ make watch
 
 Le fichier assets/styles/app.scss sert de point d'entrée. Les autres fichiers sont à placer dans le même dossier.
 
-## Composant additionnel
+## Composant additionnel présent dans le compose.yaml
 
 ### Mercure
 
