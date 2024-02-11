@@ -44,7 +44,6 @@ install: ## Fait un composer install puis un npm install dans l'application symf
 
 add: ## ajoute un composant node au projet : ex : make add axios <==> npm install axios --save
 ifdef NOM
-	echo $(NOM)
 	@$(DK) run --rm nodejs install $(NOM) --save
 endif
 
