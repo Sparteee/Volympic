@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-            $this->addFlash('verify', 'Veuillez consulter votre boite mail pour confirmer votre création de compte : http://localhost:1080');
+            $this->addFlash('verify', 'Veuillez consulter votre boite mail pour confirmer votre création de compte via le lien Mailer ci-dessus.');
             return $this->redirectToRoute('app_default');
         }
 
