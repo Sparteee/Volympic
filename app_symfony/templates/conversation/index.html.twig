@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} {% endblock %}
+{% block title %}Conversations{% endblock %}
 
 {% block body %}
-    <h1>Index Conversation</h1>
+    <h1>Tous vos groupes</h1>
+    <ul>
+        {% for conv in conversations %}
+            <li>
+                <a href="{{ path('app_conversation_single', { conv_id: conv.id }) }}">
+                    {{ conv.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
