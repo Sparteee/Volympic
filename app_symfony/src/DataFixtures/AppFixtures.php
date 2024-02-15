@@ -10,10 +10,16 @@ use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
 {
+
+    public function __construct(private UserPasswordHasherInterface $passwordHasher)
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
         /* SKILL */
@@ -60,32 +66,40 @@ class AppFixtures extends Fixture
 
         /* UTILISATEUR */
 
-        $userDev = new User("dev@gmail.com", "root", "root", "root", "root.jpg");
+        $userDev = new User("dev@gmail.com", "root", "root", "root.jpg");
+        $userDev->setPassword($this->passwordHasher->hashPassword($userDev, "root"));
+        $userDev->setRoles(["ROLE_ADMIN"]);
         $userDev->setAddress($adresse1);
         $userDev->addSkill($skillAssistance);
         $userDev->addTask($taskAccueillir);
 
-        $userBastien = new User("jolybastien@gmail.com", "bastien", "bastien", "joly", "ppBastien.jpg");
+        $userBastien = new User("jolybastien@gmail.com", "bastien", "joly", "ppBastien.jpg");
+        $userBastien->setPassword($this->passwordHasher->hashPassword($userBastien, "bastien"));
         $userBastien->setAddress($adresse2);
         $userBastien->addSkill($skillLangue);
         $userBastien->addTask($taskAssister);
 
-        $userJohan = new User("morgajohan@gmail.com", "johan", "johan","morga", "ppJohan.jpg");
+
+        $userJohan = new User("morgajohan@gmail.com", "johan","morga", "ppJohan.jpg");
+        $userJohan->setPassword($this->passwordHasher->hashPassword($userJohan, "johan"));
         $userJohan->setAddress($adresse3);
         $userJohan->addSkill($skillLangue);
         $userJohan->addTask($taskAccueillir);
 
-        $userRaph = new User("victorraphael@gmail.com", "raphael", "raphael","victor", "ppRaphael.jpg");
+        $userRaph = new User("victorraphael@gmail.com", "raphael","victor", "ppRaphael.jpg");
+        $userRaph->setPassword($this->passwordHasher->hashPassword($userRaph, "raphael"));
         $userRaph->setAddress($adresse4);
         $userRaph->addSkill($skillLangue);
         $userRaph->addTask($taskAssister);
 
-        $userArthur = new User("jarriauarthur@gmail.com", "arthur", "arthur","jarriau", "ppArthur.jpg");
+        $userArthur = new User("jarriauarthur@gmail.com","arthur","jarriau", "ppArthur.jpg");
+        $userArthur->setPassword($this->passwordHasher->hashPassword($userArthur, "arthur"));
         $userArthur->setAddress($adresse5);
         $userArthur->addSkill($skillAssistance);
         $userArthur->addTask($taskAccueillir);
 
-        $userSean = new User("reybozsean@gmail.com", "sean", "sean","reyboz", "ppSean.jpg");
+        $userSean = new User("reybozsean@gmail.com", "sean","reyboz", "ppSean.jpg");
+        $userSean->setPassword($this->passwordHasher->hashPassword($userSean, "sean"));
         $userSean->setAddress($adresse6);
         $userSean->addSkill($skillLangue);
         $userSean->addTask($taskAssister);
