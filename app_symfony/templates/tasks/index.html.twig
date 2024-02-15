@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    <form action="" method="post" name="formRange">
+        <select name="maxRange" id="maxRange">
+            <option value=""></option>
+            <option value="1">1 km</option>
+            <option value="3">3 km</option>
+            <option value="5">5 km</option>
+            <option value="10">10 km</option>
+            <option value="15">15 km</option>
+        </select>
+        <button type="submit" name="filtrer">Filtrer</button>
+    </form>
+
+
+    <div class="example-wrapper">
+        {% for task in tasks %}
+            <div>{{ task.name }}</div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
