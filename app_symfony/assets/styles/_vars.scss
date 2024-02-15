@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Founder Grotesk';
+  src: url('../fonts/Founders/foundersgrotesk-regular-webfont.woff2') format('woff2'),
+  url('../fonts/Founders/foundersgrotesk-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Light';
+  src: url('../fonts/Founders/foundersgrotesk-light-webfont.woff2') format('woff2'),
+  url('../fonts/Founders/foundersgrotesk-light-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Paris';
+  src: url('../fonts/Paris/paris2024-regular-webfont.woff') format('woff'),
+  url('../fonts/Paris/paris2024-regular-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Paris Semi Bold';
+  src: url('../fonts/Paris/paris2024-semibold-webfont.woff') format('woff'),
+  url('../fonts/Paris/paris2024-semibold-webfont.woff2') format('woff2');
+}
+
+
+$c_pastelle: #E4F0FE;
+$c_pop: #69B6FF;
+$c_marine: #00084D;
+$c_rouge: #EB3349;
+
+
+$fs12: 1.2rem;
+$fs14: 1.4rem;
+$fs16: 1.6rem;
+$fs18: 1.8rem;
+$fs24: 2.4rem;
+$fs32: 3.2rem;
+
+$mp_8: 0.8rem;
+$mp_16: 1.6rem;
+$mp_24: 2.4rem;
+$mp_32: 3.2rem;

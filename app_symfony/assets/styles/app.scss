@@ -1,5 +1,17 @@
-$fond: lightgrey;
+@import "reset";
+@import "vars";
+
+* , *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
 
 body {
-    background-color: $fond;
+    font-size: $fs14;
+    background-color: lightgrey;
 }
