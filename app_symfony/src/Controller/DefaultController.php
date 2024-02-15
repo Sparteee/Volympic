@@ -14,4 +14,12 @@ class DefaultController extends AbstractController
         return $this->render('default/index.html.twig', [
         ]);
     }
+
+
+    #[Route('/dev', name: 'app_dev')]
+    public function dev(): Response
+    {
+        return $this->render('default/dev.html.twig', [
+        ]);
+    }
 }
