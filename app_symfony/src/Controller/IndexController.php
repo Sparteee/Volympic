@@ -9,14 +9,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class IndexController extends AbstractController
 {
-
-    #[Route('/dev', name: 'app_dev')]
-    public function dev(): Response
-    {
-        return $this->render('default/dev.html.twig', [
-        ]);
-    }
-
     #[Route('/home', name: 'app_homepage')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function homepage(): Response
