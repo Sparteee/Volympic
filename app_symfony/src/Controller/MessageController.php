@@ -66,4 +66,12 @@ class MessageController extends AbstractController
 
         return new JsonResponse(json_encode(['status' => 'published!']));
     }
+
+
+    #[Route('/conversation' , name: 'app_conversation')]
+    public function conversation(): Response
+    {
+        return $this->render('conversation/index.html.twig', [
+        ]);
+    }
 }
