@@ -57,12 +57,20 @@ class AppFixtures extends Fixture
             "Assistance aux athlètes",
             15,
             new \DateTime("2024-07-24"),
-            new \DateTime("2024-08-09"),
+            new \DateTime("2024-07-28"),
             "Fournir une assistance aux athlètes dans stands olympiques."
         );
 
         $taskAssister->addSkill($skillAssistance);
         $taskAssister->setAddress($adresseSkill2);
+
+        $taskServir = new Task(
+            "Servir les boissons",
+            15,
+            new \DateTime("2024-08-24"),
+            new \DateTime("2024-08-28"),
+            "Servir les boissons aux visiteurs."
+        );
 
         /* UTILISATEUR */
 
@@ -78,6 +86,7 @@ class AppFixtures extends Fixture
         $userBastien->setAddress($adresse2);
         $userBastien->addSkill($skillLangue);
         $userBastien->addTask($taskAssister);
+        $userBastien->addTask($taskAccueillir);
 
 
         $userJohan = new User("morgajohan@gmail.com", "johan","morga", "ppJohan.jpg");

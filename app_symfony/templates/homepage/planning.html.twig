@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Symfony Hackathon {% endblock %}
+
+{% block body %}
+    <h2>Voici les tâches que tu dois réaliser aujourd'hui :</h2>
+    {% for task in arrayTaskToday %}
+        <li>{{ task.name }}</li>
+    {% endfor %}
+    <h3>Tâches à venir</h3>
+    {% for task in arrayTaskFutur %}
+        <li>{{ task.name }}</li>
+    {% endfor %}
+    <h3>Tâches passées</h3>
+    {% for task in arrayTaskPast %}
+        <li>{{ task.name }}</li>
+    {% endfor %}
+
+{% endblock %}

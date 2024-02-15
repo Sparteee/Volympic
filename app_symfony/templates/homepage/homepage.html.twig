@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Symfony Hackathon {% endblock %}
+
+{% block body %}
+    <h2>Bonjour à toi {{ user.lastname }} !</h2>
+    {% if taskCount == 0 %}
+        <a href={{ path('app_planning') }}>Voir la liste des tâches</a>
+    {% else %}
+        <a href={{ path('app_planning') }}>Voir mon planning</a>
+    {% endif %}
+
+{% endblock %}
