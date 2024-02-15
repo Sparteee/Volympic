@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>{{ user.lastname | capitalize }}</h1>
+    <img src="{{ asset('uploads/profile/'~ user.picture) }}" alt="{{ user.picture }}">
+    <p>{{ user.firstname | upper}}</p>
+    <p>{{ user.email }}</p>
+
+    <a href="{{ path('app_profile_edit') }}">Modifier le profil</a>
+{% endblock %}
