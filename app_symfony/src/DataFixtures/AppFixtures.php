@@ -73,31 +73,32 @@ class AppFixtures extends Fixture
         $userDev->addSkill($skillAssistance);
         $userDev->addTask($taskAccueillir);
 
-        $userBastien = new User("jolybastien@gmail.com", "joly", "bastien", "ppBastien.jpg");
+        $userBastien = new User("jolybastien@gmail.com", "bastien", "joly", "ppBastien.jpg");
         $userBastien->setPassword($this->passwordHasher->hashPassword($userBastien, "bastien"));
         $userBastien->setAddress($adresse2);
         $userBastien->addSkill($skillLangue);
         $userBastien->addTask($taskAssister);
 
-        $userJohan = new User("morgajohan@gmail.com", "morga", "johan", "ppJohan.jpg");
+
+        $userJohan = new User("morgajohan@gmail.com", "johan","morga", "ppJohan.jpg");
         $userJohan->setPassword($this->passwordHasher->hashPassword($userJohan, "johan"));
         $userJohan->setAddress($adresse3);
         $userJohan->addSkill($skillLangue);
         $userJohan->addTask($taskAccueillir);
 
-        $userRaph = new User("victorraphael@gmail.com", "victor", "raphael", "ppRaphael.jpg");
+        $userRaph = new User("victorraphael@gmail.com", "raphael","victor", "ppRaphael.jpg");
         $userRaph->setPassword($this->passwordHasher->hashPassword($userRaph, "raphael"));
         $userRaph->setAddress($adresse4);
         $userRaph->addSkill($skillLangue);
         $userRaph->addTask($taskAssister);
 
-        $userArthur = new User("jarriauarthur@gmail.com", "jarriau", "arthur", "ppArthur.jpg");
+        $userArthur = new User("jarriauarthur@gmail.com","arthur","jarriau", "ppArthur.jpg");
         $userArthur->setPassword($this->passwordHasher->hashPassword($userArthur, "arthur"));
         $userArthur->setAddress($adresse5);
         $userArthur->addSkill($skillAssistance);
         $userArthur->addTask($taskAccueillir);
 
-        $userSean = new User("reybozsean@gmail.com", "reyboz", "sean", "ppSean.jpg");
+        $userSean = new User("reybozsean@gmail.com", "sean","reyboz", "ppSean.jpg");
         $userSean->setPassword($this->passwordHasher->hashPassword($userSean, "sean"));
         $userSean->setAddress($adresse6);
         $userSean->addSkill($skillLangue);
