@@ -28,6 +28,14 @@ class Message
     #[ORM\JoinColumn(nullable: false)]
     private ?Conversation $conversation = null;
 
+    public function __construct(
+        ?string $content,
+        ?\DateTimeInterface $timestamp,
+    ) {
+        $this->content = $content;
+        $this->timestamp = $timestamp;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

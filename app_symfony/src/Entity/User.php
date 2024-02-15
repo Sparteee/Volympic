@@ -59,13 +59,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $messages;
 
-    public function __construct()
-    {
+    /**
+     * @param string|null $email
+     * @param string|null $password
+     * @param string|null $firstname
+     * @param string|null $lastname
+     * @param string|null $picture
+     */
+    public function __construct(
+        ?string $email,
+        ?string $password,
+        ?string $firstname,
+        ?string $lastname,
+        ?string $picture,
+    ) {
+        $this->email = $email;
+        $this->roles = ['ROLE_USER'];
+        $this->password = $password;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->picture = $picture;
         $this->tasks = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->conversations = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -23,10 +24,10 @@ class Task
     private ?string $quota = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $startDate = null;
+    private ?DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $endDate = null;
+    private ?DateTimeInterface $endDate = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -41,11 +42,29 @@ class Task
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'tasks')]
     private Collection $skills;
 
-    public function __construct()
-    {
+    /**
+     * @param string|null $name
+     * @param string|null $quota
+     * @param DateTimeInterface|null $startDate
+     * @param DateTimeInterface|null $endDate
+     * @param string|null $description
+     */
+    public function __construct(
+        ?string $name,
+        ?string $quota,
+        ?DateTimeInterface $startDate,
+        ?DateTimeInterface $endDate,
+        ?string $description,
+    ) {
+        $this->name = $name;
+        $this->quota = $quota;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->description = $description;
         $this->users = new ArrayCollection();
         $this->skills = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -76,24 +95,24 @@ class Task
         return $this;
     }
 
-    public function getStartDate(): ?\DateTimeInterface
+    public function getStartDate(): ?DateTimeInterface
     {
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTimeInterface $startDate): static
+    public function setStartDate(DateTimeInterface $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getEndDate(): ?\DateTimeInterface
+    public function getEndDate(): ?DateTimeInterface
     {
         return $this->endDate;
     }
 
-    public function setEndDate(\DateTimeInterface $endDate): static
+    public function setEndDate(DateTimeInterface $endDate): static
     {
         $this->endDate = $endDate;
 

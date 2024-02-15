@@ -24,8 +24,9 @@ class Skill
     #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'skills')]
     private Collection $tasks;
 
-    public function __construct()
+    public function __construct(?string $name)
     {
+        $this->name = $name;
         $this->users = new ArrayCollection();
         $this->tasks = new ArrayCollection();
     }

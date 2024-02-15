@@ -24,12 +24,12 @@ class Conversation
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'conversation', orphanRemoval: true)]
     private Collection $messages;
 
-    public function __construct()
+    public function __construct(?string $name)
     {
+        $this->name = $name;
         $this->users = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;

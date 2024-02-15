@@ -22,6 +22,16 @@ class Address
     #[ORM\Column]
     private ?float $longitude = null;
 
+    public function __construct(
+        ?string $address,
+        ?float $latitude,
+        ?float $longitude
+    ) {
+        $this->address = $address;
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
