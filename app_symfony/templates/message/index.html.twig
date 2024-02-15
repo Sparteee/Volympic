@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MessageController!{% endblock %}
+{% block title %}Messages{% endblock %}
 
 {% block body %}
 
@@ -17,11 +17,8 @@
     const eventSource = new EventSource("{{ mercure('http://koolkids.com/messages/1')|escape('js') }}");
     eventSource.onmessage = event => {
         // Will be called every time an update is published by the server
-        console.log(JSON.parse(event.data));
-
         const data = JSON.parse(event.data)
-        const msg = JSON.parse(data.message)
-
+        console.log(data)
 
         const feedEl = document.querySelector("#feed");
 
@@ -29,13 +26,14 @@
         const p = document.createElement('p')
         const timeEl = document.createElement('time')
         newMsg.classList.add('message')
+        newMsg.setAttribute('data-user-id', `${data.user.id}`)
 
-        p.textContent = msg.content
+        p.textContent = data.content
 
         newMsg.append(p)
 
-        timeEl.setAttribute('datetime', msg.timestamp)
-        timeEl.textContent = formatter.format(new Date(msg.timestamp))
+        timeEl.setAttribute('datetime', data.timestamp)
+        timeEl.textContent = formatter.format(new Date(data.timestamp))
 
         newMsg.append(timeEl)
         feedEl.append(newMsg)
@@ -46,9 +44,16 @@
     <h1>Messages</h1>
 
     <div class="container" id="feed">
-        <article class="message">
-            Hello
-        </article>
+        {% if messages %}
+            {% for msg in messages %}
+                <article class="message" data-user-id="{{ msg.user.id }}">
+                    <p>{{ msg.content }}</p>
+                    {# https://www.php.net/manual/en/datetime.format.php #}
+                    <time datetime="{{ msg.timestamp|date('c') }}">{{ msg.timestamp|format_datetime(pattern='', locale='fr') }}</time>
+                </article>
+            {% endfor %}
+        {% endif %}
+
     </div>
 
     <form id="input">

@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Conversation;
 use App\Entity\Message;
 use App\Entity\User;
+use App\Repository\MessageRepository;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,38 +15,52 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class MessageController extends AbstractController
 {
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/messages', name: 'app_messages_index')]
-    public function index(): Response
+    public function index(MessageRepository $message_repository): Response
     {
+        $messages = $message_repository->findAll();
+
         return $this->render('message/index.html.twig', [
-            'controller_name' => 'MessageController',
+            'messages' => $messages,
         ]);
     }
 
+    // TODO: handle conversation ID
     #[Route('/messages/send', name: 'app_messages_send', methods: ['POST'])]
-    public function send(HubInterface $hub, Request $request, SerializerInterface $serializer): JsonResponse
-    {
-        $user = $serializer->serialize($this->getUser(), 'json');
-
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    public function send(
+        #[CurrentUser] User $user,
+        HubInterface $hub,
+        Request $request,
+        SerializerInterface $serializer,
+        EntityManagerInterface $entity_manager
+    ): JsonResponse {
+        // TODO: get conversation dynamically
+        $conversation = $entity_manager
+            ->getRepository(Conversation::class)
+            ->findOneBy(['id' => 3]);
 
         $data = $request->getPayload();
 
         $content = $data->get('content');
 
-        $message = new Message();
-        $message->setContent($content);
-        $message->setTimestamp(new \DateTime());
+        $message = new Message($content, new DateTime());
+        $message->setUser($user);
+        $message->setConversation($conversation);
 
-        $json = $serializer->serialize($message, 'json');
+        $entity_manager->persist($message);
+        $entity_manager->flush();
 
-        $update = new Update(
-            'http://koolkids.com/messages/1',
-            json_encode(['message' => $json, 'user' => $user])
-        );
+        $json = $serializer->serialize($message, 'json', ['groups' => 'messages']);
+
+        $update = new Update('http://koolkids.com/messages/1', $json);
 
         $hub->publish($update);
 
