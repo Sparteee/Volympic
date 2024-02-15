@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessageController!{% endblock %}
+
+{% block body %}
+
+<script defer>
+    const formatter = new Intl.DateTimeFormat('fr-FR', {
+        weekday: "long",
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: 'Europe/Paris'
+    })
+
+    const eventSource = new EventSource("{{ mercure('http://koolkids.com/messages/1')|escape('js') }}");
+    eventSource.onmessage = event => {
+        // Will be called every time an update is published by the server
+        console.log(JSON.parse(event.data));
+
+        const data = JSON.parse(event.data)
+        const msg = JSON.parse(data.message)
+
+
+        const feedEl = document.querySelector("#feed");
+
+        const newMsg = document.createElement('article')
+        const p = document.createElement('p')
+        const timeEl = document.createElement('time')
+        newMsg.classList.add('message')
+
+        p.textContent = msg.content
+
+        newMsg.append(p)
+
+        timeEl.setAttribute('datetime', msg.timestamp)
+        timeEl.textContent = formatter.format(new Date(msg.timestamp))
+
+        newMsg.append(timeEl)
+        feedEl.append(newMsg)
+    }
+</script>
+
+<div class="example-wrapper">
+    <h1>Messages</h1>
+
+    <div class="container" id="feed">
+        <article class="message">
+            Hello
+        </article>
+    </div>
+
+    <form id="input">
+        <label for="message" aria-label="Saisir votre message">
+            <input type="text" id="message" autocomplete="off" spellcheck="false" />
+        </label>
+        <button type="submit">Envoyer</button>
+    </form>
+</div>
+
+
+    <script defer>
+        const form = document.querySelector('#input')
+        const input = document.querySelector('#message')
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const payload = {
+                content: input.value.trim()
+            }
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            }
+
+            fetch(`http://hackathon.localhost:8000/messages/send`, options)
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                    input.value = ''
+                })
+                .catch(error => {
+                    alert("Une erreur est survenue. Consultez la console pour plus de détails")
+                    console.error(error)
+                })
+        })
+
+    </script>
+
+    <style>
+        .message {
+            margin-block: 1rem;
+            max-width: max-content;
+            border-radius: 0.75rem;
+            border: 1px solid #eee;
+            padding: 0.5rem 1rem;
+            font-family: system-ui;
+            font-size: 1rem;
+        }
+
+        time {
+            margin-top: 0.25rem;
+            font-size: 14px;
+            font-style: italic;
+            opacity: 0.6;
+        }
+    </style>
+{% endblock %}
