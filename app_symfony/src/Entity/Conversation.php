@@ -24,6 +24,10 @@ class Conversation
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'conversation', orphanRemoval: true)]
     private Collection $messages;
 
+    #[ORM\OneToOne(inversedBy: 'conversation', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Task $task = null;
+
     public function __construct(?string $name)
     {
         $this->name = $name;
@@ -100,6 +104,18 @@ class Conversation
                 $message->setConversation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTask(): ?Task
+    {
+        return $this->task;
+    }
+
+    public function setTask(Task $task): static
+    {
+        $this->task = $task;
 
         return $this;
     }

@@ -42,6 +42,9 @@ class Task
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'tasks')]
     private Collection $skills;
 
+    #[ORM\OneToOne(mappedBy: 'task', cascade: ['persist', 'remove'])]
+    private ?Conversation $conversation = null;
+
     /**
      * @param string|null $name
      * @param string|null $quota
@@ -190,6 +193,23 @@ class Task
     public function removeSkill(Skill $skill): static
     {
         $this->skills->removeElement($skill);
+
+        return $this;
+    }
+
+    public function getConversation(): ?Conversation
+    {
+        return $this->conversation;
+    }
+
+    public function setConversation(Conversation $conversation): static
+    {
+        // set the owning side of the relation if necessary
+        if ($conversation->getTask() !== $this) {
+            $conversation->setTask($this);
+        }
+
+        $this->conversation = $conversation;
 
         return $this;
     }
