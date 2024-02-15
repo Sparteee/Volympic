@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
         $adresse2 = new Address('25 Avenue des Lilas, 13001 Marseille', 43.2965, 5.3698);
         $adresse3 = new Address('24 Avenue des Lilas, 13001 Marseille', 43.2965, 5.3698);
         $adresse4 = new Address('23 Avenue des Lilas, 13001 Marseille', 43.2965, 5.3698);
-        $adresse5 = new Address('22 Avenue des Lilas, 13001 Marseille', 43.2965, 5.3698);
+        $adresse5 = new Address('11 Rue des Cerisiers, 75001 Paris', 43.2965, 5.3698);
         $adresse6 = new Address('21 Avenue des Lilas, 13001 Marseille', 43.2965, 5.3698);
 
         $adresseSkill1 = new Address('11 Rue des Cerisiers, 75001 Paris', 48.8599, 2.3466);

@@ -26,10 +26,10 @@ class TaskRepository extends ServiceEntityRepository
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
+//        return $this->createQueryBuilder('tasks')
+//            ->andWhere('tasks.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
+//            ->orderBy('tasks.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
@@ -38,8 +38,8 @@ class TaskRepository extends ServiceEntityRepository
 
 //    public function findOneBySomeField($value): ?Task
 //    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
+//        return $this->createQueryBuilder('tasks')
+//            ->andWhere('tasks.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
