@@ -5,9 +5,9 @@ namespace App\Controller;
 use App\Entity\Conversation;
 use App\Entity\Message;
 use App\Entity\User;
-use App\Repository\MessageRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,33 +22,47 @@ use Symfony\Component\Serializer\SerializerInterface;
 class MessageController extends AbstractController
 {
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    #[Route('/messages', name: 'app_messages_index')]
-    public function index(MessageRepository $message_repository): Response
+    #[Route('/conversations', name: 'app_conversation')]
+    public function conversation(#[CurrentUser] User $user): Response
     {
-        $messages = $message_repository->findAll();
+        $conversations = $user->getConversations();
 
-        return $this->render('message/index.html.twig', [
-            'messages' => $messages,
+        // TODO: handle no conversation for current user
+        return $this->render('conversation/index.html.twig', [
+            'conversations' => $conversations
         ]);
     }
 
-    // TODO: handle conversation ID
-    #[Route('/messages/send', name: 'app_messages_send', methods: ['POST'])]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/conversations/{conv_id}', name: 'app_conversation_single')]
+    public function index(
+        #[CurrentUser] User $user,
+        #[MapEntity(id: 'conv_id')] Conversation $conversation,
+    ): Response {
+        // bounce user that don't belong to the conversation
+        if ( ! $conversation->getUsers()->contains($user)) {
+            return $this->redirectToRoute('app_conversation');
+        }
+
+        $messages = $conversation->getMessages();
+
+        return $this->render('conversation/chat.html.twig', [
+            'messages'       => $messages,
+            'conversationId' => $conversation->getId(),
+        ]);
+    }
+
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/conversations/{conv_id}/send', name: 'app_conversation_send', methods: ['POST'])]
     public function send(
         #[CurrentUser] User $user,
+        #[MapEntity(id: 'conv_id')] Conversation $conversation,
         HubInterface $hub,
         Request $request,
         SerializerInterface $serializer,
         EntityManagerInterface $entity_manager
     ): JsonResponse {
-        // TODO: get conversation dynamically
-        $conversation = $entity_manager
-            ->getRepository(Conversation::class)
-            ->findOneBy(['id' => 3]);
-
-        $data = $request->getPayload();
-
+        $data    = $request->getPayload();
         $content = $data->get('content');
 
         $message = new Message($content, new DateTime());
@@ -60,18 +74,10 @@ class MessageController extends AbstractController
 
         $json = $serializer->serialize($message, 'json', ['groups' => 'messages']);
 
-        $update = new Update('http://koolkids.com/messages/1', $json);
+        $update = new Update('http://koolkids.com/conversation/'.$conversation->getId(), $json);
 
         $hub->publish($update);
 
         return new JsonResponse(json_encode(['status' => 'published!']));
-    }
-
-
-    #[Route('/conversation' , name: 'app_conversation')]
-    public function conversation(): Response
-    {
-        return $this->render('conversation/index.html.twig', [
-        ]);
     }
 }
