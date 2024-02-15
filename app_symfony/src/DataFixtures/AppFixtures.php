@@ -65,27 +65,27 @@ class AppFixtures extends Fixture
         $userDev->addSkill($skillAssistance);
         $userDev->addTask($taskAccueillir);
 
-        $userBastien = new User("jolybastien@gmail.com", "bastien", "joly", "bastien", "ppBastien.jpg");
+        $userBastien = new User("jolybastien@gmail.com", "bastien", "bastien", "joly", "ppBastien.jpg");
         $userBastien->setAddress($adresse2);
         $userBastien->addSkill($skillLangue);
         $userBastien->addTask($taskAssister);
 
-        $userJohan = new User("morgajohan@gmail.com", "johan", "morga", "johan", "ppJohan.jpg");
+        $userJohan = new User("morgajohan@gmail.com", "johan", "johan","morga", "ppJohan.jpg");
         $userJohan->setAddress($adresse3);
         $userJohan->addSkill($skillLangue);
         $userJohan->addTask($taskAccueillir);
 
-        $userRaph = new User("victorraphael@gmail.com", "raphael", "victor", "raphael", "ppRaphael.jpg");
+        $userRaph = new User("victorraphael@gmail.com", "raphael", "raphael","victor", "ppRaphael.jpg");
         $userRaph->setAddress($adresse4);
         $userRaph->addSkill($skillLangue);
         $userRaph->addTask($taskAssister);
 
-        $userArthur = new User("jarriauarthur@gmail.com", "arthur", "jarriau", "arthur", "ppArthur.jpg");
+        $userArthur = new User("jarriauarthur@gmail.com", "arthur", "arthur","jarriau", "ppArthur.jpg");
         $userArthur->setAddress($adresse5);
         $userArthur->addSkill($skillAssistance);
         $userArthur->addTask($taskAccueillir);
 
-        $userSean = new User("reybozsean@gmail.com", "sean", "reyboz", "sean", "ppSean.jpg");
+        $userSean = new User("reybozsean@gmail.com", "sean", "sean","reyboz", "ppSean.jpg");
         $userSean->setAddress($adresse6);
         $userSean->addSkill($skillLangue);
         $userSean->addTask($taskAssister);
