@@ -144,6 +144,10 @@
   }
   &__button{
     border-radius: 999rem;
+    border : 2px solid $c_marine;
+    background-color: $c_rouge;
+    padding: 1rem 2rem;
+    box-shadow: -2px 2px 0px $c_marine;
 
   }
 }
