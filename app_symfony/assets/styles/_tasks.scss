@@ -1,0 +1,149 @@
+.task__card {
+  background-color: $c_pastelle;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 16px;
+  border: 2px solid $c_marine;
+  transition: 0.4s;
+}
+
+.tasks {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.panel {
+  background-color: $c_pastelle;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  padding: 0 1.5rem;
+
+  &__title {
+    font-size: 1.6rem;
+    color: black;
+    font-weight: 600;
+    font-family: "Founder Grotesk", sans-serif;
+  }
+}
+
+.task {
+  &-form {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+      align-self: center;
+      margin-top: 1rem;
+      padding: 1.3rem 2rem 1rem 2rem;
+      font-size: 1.6rem;
+      font-family: "Founder Grotesk", sans-serif;
+      background-color: $c_marine;
+      color: white;
+      border: 0;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: 0.4s
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 2rem;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  padding: 2rem 2rem;
+
+  &__title {
+
+    font-size: 2.4rem;
+    color: black;
+    font-family: Paris, sans-serif;
+  }
+
+  &__dates {
+    font-size: 1.6rem;
+    color: black;
+    font-family: Founder Grotesk, sans-serif;
+  }
+
+  &__icon {
+    transform: translateY(20%);
+    margin-right: .5rem;
+  }
+
+  &__location {
+    font-size: 1.6rem;
+    color: black;
+    font-family: Founder Grotesk, sans-serif;
+  }
+
+  &__quota {
+    font-size: 1.6rem;
+    color: black;
+    font-family: Founder Grotesk, sans-serif;
+    background-color: white;
+    width: fit-content;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    box-shadow: -2px 2px 0px $c_marine;
+  }
+
+  &__description {
+    font-size: 1.6rem;
+    color: black;
+    font-family: Founder Grotesk, sans-serif;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 2rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: -2px 2px 0px $c_marine;
+  border: 2px solid $c_marine;
+
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: Paris, sans-serif;
+
+  &__label{
+    font-size: 2.4rem;
+    color: $c_marine;
+    font-family: Paris, sans-serif;
+  }
+  &__select{
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    background-color: $c_pastelle;
+    box-shadow: -2px 2px 0px $c_marine;
+    border: 2px solid $c_marine;
+    border-radius: 2rem;
+  }
+  &__button{
+    border-radius: 999rem;
+
+  }
+}
