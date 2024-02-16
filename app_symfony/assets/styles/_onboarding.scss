@@ -1,0 +1,31 @@
+@import "vars";
+
+.onboarding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+.onboarding__start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.onboarding-start {
+  &__title {
+    font-family: "Paris Semi Bold", sans-serif;
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  &__text {
+    font-family: "Paris Regular", sans-serif;
+    font-size: $fs24;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}
