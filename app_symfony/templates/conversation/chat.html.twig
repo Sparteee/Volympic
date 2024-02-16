@@ -1,18 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }}{% endblock %}
+{% block title %} Conversation {% endblock %}
 
 {% block body %}
     <script defer>
 
         const formatter = new Intl.DateTimeFormat('fr-FR', {
-            weekday: "long",
             day: "2-digit",
             month: "short",
+            year: "numeric",
             hour: "2-digit",
             minute: "2-digit",
-            timeZone: 'Europe/Paris'
+            timeZone: 'Europe/Paris',
         })
+
+        const formatMsgDate = (date) => formatter
+            .formatToParts(date)
+            .map(({type, value}) => {
+                switch(value) {
+                    case ', ':
+                        return ' à ';
+                    default:
+                        return value;
+                }
+            }).join('');
 
         const eventSource = new EventSource("{{ mercure('http://koolkids.com/conversation/' ~ conversationId)|escape('js') }}");
         eventSource.onmessage = event => {
@@ -21,23 +32,20 @@
             console.log(data)
 
             const feedEl = document.querySelector("#feed");
+            const template = document.querySelector('#new-message-template');
+            const newMessage = template.content.cloneNode(true);
+            const msgContent = newMessage.querySelector('.discussion-message__content');
+            msgContent.textContent = data.content;
+            const msgTime = newMessage.querySelector('.discussion-message__time');
+
+            const timestamp = new Date(data.timestamp);
+            msgTime.setAttribute('datetime', timestamp.toISOString());
+            msgTime.textContent = formatMsgDate(timestamp);
+
+            feedEl.append(newMessage);
+
             //auto scroll to end of chat
             feedEl.scrollTop = feedEl.scrollHeight;
-            const newMsg = document.createElement('article')
-            const p = document.createElement('p')
-            const timeEl = document.createElement('time')
-            newMsg.classList.add('message')
-            newMsg.setAttribute('data-user-id', `${data.user.id}`)
-
-            p.textContent = data.content
-
-            newMsg.append(p)
-
-            timeEl.setAttribute('datetime', data.timestamp)
-            timeEl.textContent = formatter.format(new Date(data.timestamp))
-
-            newMsg.append(timeEl)
-            feedEl.append(newMsg)
         }
     </script>
 
@@ -47,12 +55,12 @@
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="13.0003" height="2.00137"
                           transform="matrix(-1 1.74846e-07 1.74846e-07 1 13.0012 0)"
-                          fill="#E4F0FE"/>
+                          fill="#E4F0FE"></rect>
                     <rect width="13.0089" height="2.00137"
-                          transform="matrix(-1.74846e-07 -1 -1 1.74846e-07 2.00146 14.0096)" fill="#E4F0FE"/>
+                          transform="matrix(-1.74846e-07 -1 -1 1.74846e-07 2.00146 14.0096)" fill="#E4F0FE"></rect>
                     <rect width="17.7912" height="2.00071"
                           transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 15.0012 13.5853)"
-                          fill="#E4F0FE"/>
+                          fill="#E4F0FE"></rect>
                 </svg>
             </button>
             <h1 class="chat__title">Messages</h1>
@@ -71,7 +79,7 @@
                                     <p class="discussion-message__content discussion-message__content--me">{{ msg.content }}</p>
                                 </div>
                                 <time class="discussion-message__time discussion-message__time--me"
-                                      datetime="{{ msg.timestamp|date('c') }}">{{ msg.timestamp|format_datetime(pattern='', locale='fr') }}</time>
+                                      datetime="{{ msg.timestamp|date('c') }}">{{ msg.timestamp|format_datetime('medium', 'short', locale='fr') }}</time>
                             {% else %}
 
                                 <p class="discussion-message__author">{{ msg.user.lastname }} {{ msg.user.firstname }}</p>
@@ -83,7 +91,7 @@
 
                                 </div>
                                 <time class="discussion-message__time"
-                                      datetime="{{ msg.timestamp|date('c') }}">{{ msg.timestamp|format_datetime(pattern='', locale='fr') }}</time>
+                                      datetime="{{ msg.timestamp|date('c') }}">{{ msg.timestamp|format_datetime('medium', 'short', locale='fr') }}</time>
                             {% endif %}
                             {# https://www.php.net/manual/en/datetime.format.php #}
                         </article>
@@ -92,13 +100,27 @@
 
             </div>
 
+            <template id="new-message-template">
+                <article class="discussion-message" data-user-id="{{ user.id }}">
+                    <p class="discussion-message__author discussion-message__author--me">Vous</p>
+                    <div class="discussion-content discussion-content--me ">
+                        <img class="discussion-message__avatar discussion-message__avatar--me"
+                             src="{{ asset('uploads/profile/' ~ user.picture) }}"
+                             alt="{{ user.firstname }} {{ user.lastname }}">
+                        <p class="discussion-message__content discussion-message__content--me"></p>
+                    </div>
+                    <time class="discussion-message__time discussion-message__time--me"
+                          datetime=""></time>
+                </article>
+            </template>
+
             <form class="chat-input" id="input">
                 <label class="chat__label" for="message" aria-label="Saisir votre message">
                     <input type="text" class="chat__input" id="message" autocomplete="off" spellcheck="false"/>
                     <button class="chat__btn" type="submit">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 14L21 3M10 14L13.5001 21C13.5439 21.0957 13.6144 21.1769 13.703 21.2338C13.7917 21.2906 13.8948 21.3209 14.0001 21.3209C14.1054 21.3209 14.2085 21.2906 14.2971 21.2338C14.3858 21.1769 14.4562 21.0957 14.5001 21L21 3M10 14L3.00007 10.5C2.90433 10.4561 2.8232 10.3857 2.76632 10.2971C2.70944 10.2084 2.6792 10.1053 2.6792 10C2.6792 9.89468 2.70944 9.79158 2.76632 9.70295C2.8232 9.61431 2.90433 9.54387 3.00007 9.5L21 3"
-                                  stroke="#E4F0FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke="#E4F0FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                     </button>
                 </label>

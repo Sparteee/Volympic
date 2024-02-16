@@ -12,8 +12,8 @@
     justify-content: center;
     background-color: $c_pastelle;
     max-height: 75%;
-    padding: 1rem;
-    padding-top: 2rem;
+    padding: 0 1rem 1rem;
+    //padding-top: 2rem;
     border-radius: 20px;
     overflow-y: auto;
     border: 2px solid $c_marine;
@@ -98,6 +98,8 @@
   padding: 1rem;
   height: 60vh;
   overflow-y: auto;
+  overflow-x: hidden;
+
   &-content {
     display: flex;
     gap: 1rem;
