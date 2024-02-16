@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title} {{ parent() }} - Inscription {% endblock %}
+{% block title %} {{ parent()}} - Inscription {% endblock %}
 
 
 {% block body %}
@@ -325,7 +325,7 @@
                 </button>
             </form>
         </div>
-        <div class="onboarding__rules">
+        <div class="onboarding__rules none">
             <div class="container__rules">
                 <svg class="onboarding__svg" width="251" height="50" viewBox="0 0 251 50" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -399,12 +399,13 @@
         header.style.display = 'none';
         footer.style.display = 'none';
 
+        console.log(footer);
         const onboarding = document.querySelector(".onboarding");
         const onboardingButton = document.querySelector('.onboarding__button');
         const form = document.querySelector('.form');
         const onboardingRulesButton = document.querySelector('.onboarding__rules-button');
 
-        // onboarding.children[0].classList.remove('none');
+        onboarding.children[0].classList.remove('none');
 
         onboardingButton.addEventListener('click', () => {
             onboarding.children[0].classList.add('none');
@@ -479,7 +480,7 @@
                     hiddenInputEl.setAttribute('data-city-name', `${cityName}`);
                     addressInputEl.value = cityName;
                     addressSuggestionsEl.innerHTML = ''; // clear the list of suggestions when one's been selected
-                %});
+                });
 
                 addressSuggestionsEl.append(entry);
             });
