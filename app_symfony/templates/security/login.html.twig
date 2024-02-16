@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connectez-vous !{% endblock %}
+{% block title %}{{ parent() }} - Se connecter{% endblock %}
 
 {% block body %}
     <main role="main" style="margin: 30px">
         <form method="post" class="form">
             <h1 class="form__title">Connectez vous</h1>
-            <label for="inputEmail" class="form__text">Email</label>
-            <input type="email" name="email" id="inputEmail" class="form__input" autocomplete="email" required
-                   autofocus>
-            <label for="inputPassword" class="form__text">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form__input"
-                   autocomplete="current-password" required>
+            <div>
+                <label for="inputEmail" class="form__text">Email</label>
+                <input type="email" name="email" id="inputEmail" class="form__input" autocomplete="email" required
+                       autofocus>
 
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+            </div>
+            <div>
+                <label for="inputPassword" class="form__text">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form__input"
+                       autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+            </div>
+
+            <a class="no__account" href="{{ path('app_register') }}"> Pas encore de compte ?</a>
 
             <button class="form__btn" type="submit">
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
