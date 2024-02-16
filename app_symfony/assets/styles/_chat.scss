@@ -1,0 +1,167 @@
+.chat {
+  display: flex;
+  min-height: 90%;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: $c_pastelle;
+    max-height: 75%;
+    padding: 1rem;
+    padding-top: 2rem;
+    border-radius: 20px;
+    overflow-y: auto;
+    border: 2px solid $c_marine;
+  }
+
+  &-input {
+    align-self: center;
+    width: 95%;
+    position: relative;
+  }
+
+  &__input {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    font-family: 'Founders Grotesk', sans-serif;
+    outline: $c_marine 4px solid;
+    border: 2px solid white;
+
+    background-color: $c_marine;
+    color: white;
+    border-radius: 2rem;
+    width: 100%;
+
+    &-send {
+      border: 0;
+      background: none;
+      font-size: 2rem;
+      background-color: $c_marine;
+      padding: 1rem;
+      aspect-ratio: 1;
+      border-radius: 999rem;
+    }
+  }
+
+  &__btn {
+    border: 0;
+    background: $c_rouge none;
+    padding: .6rem;
+    position: absolute;
+    border-radius: 999rem;
+    right: 1%;
+    top: 8.5%;
+    height: 34px;
+  }
+
+  &-header {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__back {
+    border: 0;
+    background: none;
+    font-size: 2rem;
+    background-color: $c_marine;
+    padding: 1rem;
+    aspect-ratio: 1;
+    border-radius: 999rem;
+  }
+
+  &__title {
+    font-size: $fs24;
+    color: black;
+    text-transform: uppercase;
+    font-family: Paris, sans-serif;
+  }
+
+
+}
+
+.discussion {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  height: 60vh;
+  overflow-y: auto;
+  &-content {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    &--me {
+      justify-content: flex-end;
+
+    }
+  }
+
+  &-message {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__avatar {
+      aspect-ratio: 1;
+      border-radius: 999rem;
+      width: 25px;
+      &--me {
+        order:2;
+      }
+    }
+    &__author {
+      font-size: $fs14;
+      font-family: 'Founders Grotesk', sans-serif;
+      color: $c_marine;
+      font-weight: bold;
+      &--me {
+        align-self: flex-end;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: $c_pop;
+      padding: 1em 2rem;
+      border-radius: 2rem;
+      font-size: $fs16;
+      width: fit-content;
+      font-family: 'Founders Grotesk', sans-serif;
+
+      &--me {
+        background-color: $c_marine;
+        color: white;
+        align-self: flex-end;
+      }
+    }
+
+    &__time {
+      display: flex;
+      flex-direction: column;
+      font-size: $fs12;
+      color: $c_marine;
+      font-family: 'Founders Grotesk', sans-serif;
+      opacity: .6;
+
+      &--me {
+        align-self: flex-end;
+      }
+    }
+  }
+
+}
