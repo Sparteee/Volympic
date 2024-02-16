@@ -54,23 +54,16 @@ class AppFixtures extends Fixture
         $taskAccueillir->setAddress($adresseSkill1);
 
         $taskAssister = new Task(
-            "Assistance aux athlètes",
+            "Assister les athlètes",
             15,
-            new \DateTime("2024-07-24"),
-            new \DateTime("2024-07-28"),
-            "Fournir une assistance aux athlètes dans stands olympiques."
+            new \DateTime("2024-08-24"),
+            new \DateTime("2024-08-28"),
+            "Fournir une assistance aux athlètes dans les stands olympiques."
         );
 
         $taskAssister->addSkill($skillAssistance);
         $taskAssister->setAddress($adresseSkill2);
 
-        $taskServir = new Task(
-            "Servir les boissons",
-            15,
-            new \DateTime("2024-08-24"),
-            new \DateTime("2024-08-28"),
-            "Servir les boissons aux visiteurs."
-        );
 
         /* UTILISATEUR */
 

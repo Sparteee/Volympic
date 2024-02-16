@@ -1,19 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Symfony Hackathon {% endblock %}
+{% block title %} Volympic {% endblock %}
 
 {% block body %}
-    <h2>Voici les tâches que tu dois réaliser aujourd'hui :</h2>
-    {% for task in arrayTaskToday %}
-        <li>{{ task.name }}</li>
-    {% endfor %}
-    <h3>Tâches à venir</h3>
-    {% for task in arrayTaskFutur %}
-        <li>{{ task.name }}</li>
-    {% endfor %}
-    <h3>Tâches passées</h3>
-    {% for task in arrayTaskPast %}
-        <li>{{ task.name }}</li>
-    {% endfor %}
+    <section class="planning">
+        <h2 class="planning__taskToday">Tâche(s) Aujourd'hui :</h2>
+        <ul class="planning__liste">
+            {% for task in arrayTaskToday %}
+                <li><a class="planning__name" href="{{ path('app_conversation_single', {conv_id: task.conversation.id}) }}">
+                        <div  class="planning__lieu">
+                            <h3 class="planning__title">{{ task.name }}</h3>
+                            <p class="planning__address">{{ task.address.address }} <span class="planning__date">{{ task.startDate|format_datetime(pattern='Y-m-d', locale='fr') }} - {{ task.endDate|format_datetime(pattern='Y-m-d', locale='fr') }}</p></span>
+                        </div>
+                        <svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="15" cy="15" r="15" fill="#69B6FF"/>
+                            <g filter="url(#filter0_d_74_2018)">
+                                <path d="M7.94737 22.6642L11.3484 19.2632H22.1579C22.6604 19.2632 23.1423 19.0635 23.4977 18.7082C23.853 18.3529 24.0526 17.8709 24.0526 17.3684V8.84211C24.0526 8.33959 23.853 7.85766 23.4977 7.50232C23.1423 7.14699 22.6604 6.94737 22.1579 6.94737H9.84211C9.33959 6.94737 8.85766 7.14699 8.50232 7.50232C8.14699 7.85766 7.94737 8.33959 7.94737 8.84211V22.6642ZM7.94737 24H7V8.84211C7 8.08833 7.29944 7.36543 7.83243 6.83243C8.36543 6.29944 9.08833 6 9.84211 6H22.1579C22.9117 6 23.6346 6.29944 24.1676 6.83243C24.7006 7.36543 25 8.08833 25 8.84211V17.3684C25 18.1222 24.7006 18.8451 24.1676 19.3781C23.6346 19.9111 22.9117 20.2105 22.1579 20.2105H11.7368L7.94737 24ZM10.7895 9.78947H21.2105V10.7368H10.7895V9.78947ZM10.7895 12.6316H21.2105V13.5789H10.7895V12.6316ZM10.7895 15.4737H18.3684V16.4211H10.7895V15.4737Z" fill="#00084D"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_74_2018" x="3" y="6" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="4"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_74_2018"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_74_2018" result="shape"/>
+                                </filter>
+                            </defs>
+                        </svg>
+                        </a>
+                    </li>
+            {% endfor %}
+        </ul>
+        <h3 class="planning__taskToday">Tâche(s) à venir</h3>
+        <ul class="planning__liste">
+            {% for task in arrayTaskFutur %}
+                <li><a class="planning__name" href="{{ path('app_conversation_single', {conv_id: task.conversation.id}) }}">
+                        <div  class="planning__lieu">
+                            <h3 class="planning__title">{{ task.name }}</h3>
+                            <p class="planning__address">{{ task.address.address }} <span class="planning__date">{{ task.startDate|format_datetime(pattern='Y-m-d', locale='fr') }} - {{ task.endDate|format_datetime(pattern='Y-m-d', locale='fr') }}</p></span>
+                        </div>
+                        <svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="15" cy="15" r="15" fill="#69B6FF"/>
+                            <g filter="url(#filter0_d_74_2018)">
+                                <path d="M7.94737 22.6642L11.3484 19.2632H22.1579C22.6604 19.2632 23.1423 19.0635 23.4977 18.7082C23.853 18.3529 24.0526 17.8709 24.0526 17.3684V8.84211C24.0526 8.33959 23.853 7.85766 23.4977 7.50232C23.1423 7.14699 22.6604 6.94737 22.1579 6.94737H9.84211C9.33959 6.94737 8.85766 7.14699 8.50232 7.50232C8.14699 7.85766 7.94737 8.33959 7.94737 8.84211V22.6642ZM7.94737 24H7V8.84211C7 8.08833 7.29944 7.36543 7.83243 6.83243C8.36543 6.29944 9.08833 6 9.84211 6H22.1579C22.9117 6 23.6346 6.29944 24.1676 6.83243C24.7006 7.36543 25 8.08833 25 8.84211V17.3684C25 18.1222 24.7006 18.8451 24.1676 19.3781C23.6346 19.9111 22.9117 20.2105 22.1579 20.2105H11.7368L7.94737 24ZM10.7895 9.78947H21.2105V10.7368H10.7895V9.78947ZM10.7895 12.6316H21.2105V13.5789H10.7895V12.6316ZM10.7895 15.4737H18.3684V16.4211H10.7895V15.4737Z" fill="#00084D"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_74_2018" x="3" y="6" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="4"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_74_2018"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_74_2018" result="shape"/>
+                                </filter>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 
 {% endblock %}
