@@ -34,13 +34,13 @@
                     </li>
             {% endfor %}
         </ul>
-        <h3 class="planning__taskToday">Tâche(s) à venir</h3>
+        <h3 class="planning__taskToday">Tâche(s) à venir :</h3>
         <ul class="planning__liste">
             {% for task in arrayTaskFutur %}
                 <li><a class="planning__name" href="{{ path('app_conversation_single', {conv_id: task.conversation.id}) }}">
                         <div  class="planning__lieu">
                             <h3 class="planning__title">{{ task.name }}</h3>
-                            <p class="planning__address">{{ task.address.address }} <span class="planning__date">{{ task.startDate|format_datetime(pattern='Y-m-d', locale='fr') }} - {{ task.endDate|format_datetime(pattern='Y-m-d', locale='fr') }}</p></span>
+                            <p class="planning__address">{{ task.address.address }} <span class="planning__date planning__date--blue">{{ task.startDate|format_datetime(pattern='Y-m-d', locale='fr') }} - {{ task.endDate|format_datetime(pattern='Y-m-d', locale='fr') }}</p></span>
                         </div>
                         <svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="15" cy="15" r="15" fill="#69B6FF"/>
