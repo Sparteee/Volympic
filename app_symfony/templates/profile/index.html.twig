@@ -3,10 +3,30 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>{{ user.lastname | capitalize }}</h1>
-    <img src="{{ asset('uploads/profile/'~ user.picture) }}" alt="{{ user.picture }}">
-    <p>{{ user.firstname | upper}}</p>
-    <p>{{ user.email }}</p>
+    <section class="profile">
+        <div class="profile-picture">
+            <img class="profile-picture__img" src="{{ asset('uploads/profile/'~ user.picture) }}"
+                 alt="{{ user.picture }}">
+        </div>
+        <div class="profile-info">
+            <p class="profile-info__text">{{ user.lastname | upper }} {{ user.firstname | capitalize }}</p>
+            <p class="profile-info__text profile-info__text--address">{{ user.address.address }}</p>
+        </div>
+        <div class="profile-code">
+            <img class="profile-code__img" src="{{ asset('uploads/content/frame.png') }}" alt="qrCode">
+        </div>
 
-    <a href="{{ path('app_profile_edit') }}">Modifier le profil</a>
+        <div class="profile-button">
+            <a class="profile-button__edit" href="{{ path('app_profile_edit') }}">Modifier le profil</a>
+            <a class="profile-button__logout">
+                <svg width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.5295 0H23.8236C25.5707 0 27.0001 1.42941 27.0001 3.17647V28.5882C27.0001 30.3353 25.5707 31.7647 23.8236 31.7647H9.5295C7.78244 31.7647 6.35303 30.3353 6.35303 28.5882V25.4118H9.5295V28.5882H23.8236V3.17647H9.5295V6.35294H6.35303V3.17647C6.35303 1.42941 7.78244 0 9.5295 0Z"
+                          fill="#00084D"/>
+                    <path d="M11.2606 21.5841L13.5 23.8235L21.4412 15.8823L13.5 7.94116L11.2606 10.1806L15.3582 14.2941H0V17.4706H15.3582L11.2606 21.5841Z"
+                          fill="#00084D"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
 {% endblock %}

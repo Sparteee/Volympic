@@ -1,0 +1,69 @@
+@import "vars";
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-picture {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 2rem;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 998rem;
+      aspect-ratio: 1;
+      border: 2px solid $c_marine;
+      box-shadow: -6px 1px 0px 1px $c_marine;
+    }
+  }
+
+  &-info {
+    &__text {
+      text-align: center;
+      font-size: 2.2rem;
+      font-family: Paris, sans-serif;
+      margin: 1rem 0;
+
+      &--address {
+        font-family: "Founder Grotesk", sans-serif;
+        font-size: $fs18;
+      }
+    }
+  }
+
+  &-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: 25rem;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__edit {
+      font-size: $fs24;
+      font-family: "Founder Grotesk", sans-serif;
+      text-decoration: none;
+      color: black;
+      border: 3px solid $c_marine;
+      padding: 1rem 2rem 0 2rem;
+      border-radius: 5rem;
+      box-shadow: -4px 3px 0 0 $c_marine;
+    }
+  }
+}
