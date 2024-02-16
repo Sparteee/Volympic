@@ -1,6 +1,9 @@
 @import "reset";
 @import "vars";
 
+@import "conversations";
+
+
 * , *::before, *::after{
     box-sizing: border-box;
     margin: 0;
@@ -13,5 +16,8 @@ html {
 
 body {
     font-size: $fs14;
-    background-color: lightgrey;
+    background: url('../images/background_volympic.svg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 }

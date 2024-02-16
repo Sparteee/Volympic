@@ -3,14 +3,16 @@
 {% block title %}Conversations{% endblock %}
 
 {% block body %}
-    <h1>Tous vos groupes</h1>
-    <ul>
-        {% for conv in conversations %}
-            <li>
-                <a href="{{ path('app_conversation_single', { conv_id: conv.id }) }}">
-                    {{ conv.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="conversation-page">
+        <h1 class="conversation-page__title">Groupes de discussions</h1>
+        <ul class="conversations">
+            {% for conv in conversations %}
+                <li class="conversations__elem">
+                    <a class="conversations__link" href="{{ path('app_conversation_single', { conv_id: conv.id }) }}">
+                        {{ conv.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
