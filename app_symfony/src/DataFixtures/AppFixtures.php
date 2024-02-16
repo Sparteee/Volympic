@@ -54,34 +54,27 @@ class AppFixtures extends Fixture
         $taskAccueillir->setAddress($adresseSkill1);
 
         $taskAssister = new Task(
-            "Assistance aux athlètes",
+            "Assister les athlètes",
             15,
-            new \DateTime("2024-07-24"),
-            new \DateTime("2024-07-28"),
-            "Fournir une assistance aux athlètes dans stands olympiques."
+            new \DateTime("2024-08-24"),
+            new \DateTime("2024-08-28"),
+            "Fournir une assistance aux athlètes dans les stands olympiques."
         );
 
         $taskAssister->addSkill($skillAssistance);
         $taskAssister->setAddress($adresseSkill2);
 
-        $taskServir = new Task(
-            "Servir les boissons",
-            15,
-            new \DateTime("2024-08-24"),
-            new \DateTime("2024-08-28"),
-            "Servir les boissons aux visiteurs."
-        );
 
         /* UTILISATEUR */
 
-        $userDev = new User("dev@gmail.com", "root", "root", "root.jpg");
+        $userDev = new User("dev@gmail.com", "root", "root", "default.jpg");
         $userDev->setPassword($this->passwordHasher->hashPassword($userDev, "root"));
         $userDev->setRoles(["ROLE_ADMIN"]);
         $userDev->setAddress($adresse1);
         $userDev->addSkill($skillAssistance);
         $userDev->addTask($taskAccueillir);
 
-        $userBastien = new User("jolybastien@gmail.com", "Bastien", "Joly", "ppBastien.jpg");
+        $userBastien = new User("jolybastien@gmail.com", "Bastien", "Joly", "default.jpg");
         $userBastien->setPassword($this->passwordHasher->hashPassword($userBastien, "bastien"));
         $userBastien->setAddress($adresse2);
         $userBastien->addSkill($skillLangue);
@@ -89,25 +82,25 @@ class AppFixtures extends Fixture
         $userBastien->addTask($taskAccueillir);
 
 
-        $userJohan = new User("morgajohan@gmail.com", "Johan","Morga", "ppJohan.jpg");
+        $userJohan = new User("morgajohan@gmail.com", "Johan","Morga", "default.jpg");
         $userJohan->setPassword($this->passwordHasher->hashPassword($userJohan, "johan"));
         $userJohan->setAddress($adresse3);
         $userJohan->addSkill($skillLangue);
         $userJohan->addTask($taskAccueillir);
 
-        $userRaph = new User("victorraphael@gmail.com", "Raphael","Victor", "ppRaphael.jpg");
+        $userRaph = new User("victorraphael@gmail.com", "Raphael","Victor", "default.jpg");
         $userRaph->setPassword($this->passwordHasher->hashPassword($userRaph, "raphael"));
         $userRaph->setAddress($adresse4);
         $userRaph->addSkill($skillLangue);
         $userRaph->addTask($taskAssister);
 
-        $userArthur = new User("jarriauarthur@gmail.com","Arthur","Jarriau", "ppArthur.jpg");
+        $userArthur = new User("jarriauarthur@gmail.com","Arthur","Jarriau", "default.jpg");
         $userArthur->setPassword($this->passwordHasher->hashPassword($userArthur, "arthur"));
         $userArthur->setAddress($adresse5);
         $userArthur->addSkill($skillAssistance);
         $userArthur->addTask($taskAccueillir);
 
-        $userSean = new User("reybozsean@gmail.com", "Sean","Reyboz", "ppSean.jpg");
+        $userSean = new User("reybozsean@gmail.com", "Sean","Reyboz", "default.jpg");
         $userSean->setPassword($this->passwordHasher->hashPassword($userSean, "sean"));
         $userSean->setAddress($adresse6);
         $userSean->addSkill($skillLangue);

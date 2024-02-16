@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -70,9 +71,9 @@ class SecurityController extends AbstractController
         );
 
         $address = new Address(
-            $data->get('address'),
-            49.899,
-            2.3466
+            $data->get('cityName'),
+            (float) $data->get('lat'),
+            (float) $data->get('long'),
         );
 
         $user->setAddress($address);

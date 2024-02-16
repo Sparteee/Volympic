@@ -4,28 +4,127 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  height: 100%;
+
+  &__start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__svg {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &-start {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    &__title {
+      font-family: "Paris Semi Bold", sans-serif;
+      font-size: 6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: $c_marine;
+    }
+
+    &__text {
+      font-family: "Paris Regular", sans-serif;
+      font-size: $fs24;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: white;
+    border: 3px solid $c_marine;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    font-family: 'Paris', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    cursor: pointer;
+  }
+
+  &__rules {
+    height: 80vh;
+
+    &-button {
+      background-color: white;
+      border: 3px solid $c_marine;
+      padding: 1rem 2rem;
+      border-radius: 5rem;
+      font-family: 'Paris', sans-serif;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: -3px 2px 0 0 $c_marine;
+    }
+  }
 }
 
-.onboarding__start {
+.container__rules {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  gap: 4rem;
 }
 
-.onboarding-start {
-  &__title {
-    font-family: "Paris Semi Bold", sans-serif;
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+.rules {
+
+  &__container {
+    background-color: $c_pastelle;
+    border-radius: 2rem;
+    border: 2px solid $c_marine;
+    width: 85%;
+    height: 315px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    padding: 2rem;
+    box-shadow: -10px 6px 0 0 $c_marine;
   }
 
-  &__text {
-    font-family: "Paris Regular", sans-serif;
-    font-size: $fs24;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  &__title {
+    font-family: Paris, sans-serif;
+    font-size: 2rem;
+    color: $c_marine;
+    text-transform: uppercase;
   }
+
+  &__links {
+    padding: 2rem;
+  }
+
+  &__link {
+    color: $c_marine;
+    font-family: Paris, sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    list-style-type: decimal;
+    padding: .2rem;
+  }
+}
+
+
+.form__address-suggestion {
+  text-align: left;
+  margin-top: 2px;
+}
+
+#button__address-suggestion {
+  background-color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5rem;
+  border: 3px solid $c_marine;
 }

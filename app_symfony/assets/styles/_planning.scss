@@ -1,0 +1,65 @@
+.planning {
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  color: $c_marine;
+
+  &__taskToday {
+    font-family: 'Paris', 'sans-serif';
+    text-transform: uppercase;
+    font-size: $fs24;
+    align-self: flex-start;
+    padding-left: 2rem;
+  }
+
+  &__liste {
+    background-color: $c_pastelle;
+    border: 2px solid $c_marine;
+    box-shadow: -10px 10px 0px $c_marine;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+    border-radius: 1.6rem;
+    flex-wrap: nowrap;
+  }
+
+  &__name {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Paris', 'sans-serif';
+    text-decoration: none;
+    font-size: $fs24;
+    flex-wrap: nowrap;
+    gap: 4rem;
+    color: $c_marine;
+  }
+
+  &__lieu {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Founder Grotesk', 'sans-serif';
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__date {
+    color: $c_rouge;
+    &--blue {
+      color: $c_marine;
+    }
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    font-size: $fs24;
+  }
+}
