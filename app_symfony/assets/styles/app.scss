@@ -1,5 +1,6 @@
 @import "reset";
 @import "vars";
+@import "homepage";
 
 * , *::before, *::after{
     box-sizing: border-box;
@@ -11,7 +12,11 @@ html {
     font-size: 62.5%;
 }
 
+
 body {
     font-size: $fs14;
-    background-color: lightgrey;
+    background: url('../images/background_volympic.svg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 }
