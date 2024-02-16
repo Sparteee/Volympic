@@ -15,10 +15,12 @@ class IndexController extends AbstractController
     {
         $currentUser = $this->getUser();
         $taskCount = count($currentUser->getTasks());
+        $task = $currentUser->getTasks()[0];
 
         return $this->render('homepage/homepage.html.twig', [
             'user' => $currentUser,
             'taskCount' => $taskCount,
+            'task' => $task
         ]);
     }
 
