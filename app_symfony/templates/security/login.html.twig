@@ -3,42 +3,30 @@
 {% block title %}Connectez-vous !{% endblock %}
 
 {% block body %}
-<main role="main" style="margin: 30px">
-    {% for flash_msg in app.flashes('mail') %}
-        <div class="alert alert-success" role="alert">{{ flash_msg }}</div>
-    {% endfor %}
+    <main role="main" style="margin: 30px">
+        <form method="post" class="form">
+            <h1 class="form__title">Connectez vous</h1>
+            <label for="inputEmail" class="form__text">Email</label>
+            <input type="email" name="email" id="inputEmail" class="form__input" autocomplete="email" required
+                   autofocus>
+            <label for="inputPassword" class="form__text">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form__input"
+                   autocomplete="current-password" required>
 
-<form method="post">
-    {% if app.user %}
-        <div class="mb-3">
-            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-        </div>
-    {% else %}
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
 
-    <h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email"  name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-    #}
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
-            </label>
-        </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Connexion
-    </button>
-    {% endif %}
-</form>
-</main>
+            <button class="form__btn" type="submit">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5386 3.96128C14.7464 3.75351 15.0832 3.75351 15.291 3.96128L22.0586 10.7289C22.2664 10.9367 22.2664 11.2735 22.0586 11.4813C21.8509 11.6891 21.514 11.6891 21.3062 11.4813L14.5386 4.71367C14.3308 4.5059 14.3308 4.16904 14.5386 3.96128Z"
+                          fill="#E8272F"/>
+                    <path d="M14.7058 18.985C14.498 18.7772 14.498 18.4403 14.7058 18.2326L21.758 11.1804C21.9658 10.9726 22.3026 10.9726 22.5104 11.1804C22.7182 11.3881 22.7182 11.725 22.5104 11.9327L15.4582 18.985C15.2504 19.1927 14.9136 19.1927 14.7058 18.985Z"
+                          fill="#E8272F"/>
+                    <path d="M1.06909 11.5614C1.06909 11.2676 1.30728 11.0294 1.60111 11.0294L21.8179 11.0294C22.1117 11.0294 22.3499 11.2676 22.3499 11.5614C22.3499 11.8552 22.1117 12.0934 21.8179 12.0934L1.60111 12.0934C1.30728 12.0934 1.06909 11.8552 1.06909 11.5614Z"
+                          fill="#E8272F"/>
+                </svg>
+            </button>
+        </form>
+    </main>
 {% endblock %}

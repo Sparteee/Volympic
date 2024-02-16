@@ -65,4 +65,16 @@
     border-radius: 5rem;
 
   }
+
+  &__text {
+    font-size: $fs18;
+    font-family: "Paris", sans-serif;
+    color: $c_marine;
+  }
+
+  &__title {
+    font-size: $fs24;
+    font-family: "Paris", sans-serif;
+    color: $c_marine;
+  }
 }
