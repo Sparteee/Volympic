@@ -1,0 +1,69 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 8.5vh;
+  z-index: 1000;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 102vw;
+    height: 2rem;
+    left: -0.4rem;
+    top: -1rem;
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    border: 2px solid $c_marine;
+
+    isolation: isolate;
+    z-index: -1;
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  background-color: white;
+  padding-bottom: 1rem;
+
+  svg{
+    stroke: $c_marine;
+    & path{
+
+      stroke: $c_marine;
+    }
+    &:visited{
+
+      stroke: $c_marine;
+    }
+
+  }
+}
+.fill{
+  fill: $c_marine;
+}
+.active {
+  .fill{
+    fill: white;
+  }
+  border-radius: 999rem;
+  padding: 10px;
+  //border: 1.5px solid $c_marine;
+  //color: white;
+  background-color: $c_marine;
+  //aspect-ratio: 1;
+  svg{
+    z-index: 10000;
+    color: white;
+    stroke: white;
+    & path{
+      stroke: white;
+    }
+  }
+
+
+}
