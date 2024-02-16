@@ -1,0 +1,88 @@
+@import 'vars';
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding-left: 5vw;
+    &__title {
+      width: 80vw;
+      height: auto;
+    }
+
+  &__titleSecond {
+    font-size: $fs32;
+    font-family: 'Paris Semi Bold', 'sans-serif';
+    align-self: flex-start;
+    color: $c_marine;
+    &--user {
+      display: block;
+      font-family: 'Paris', 'sans-serif';
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.4rem;
+    line-height: 0;
+    width: auto;
+    font-size: $fs24;
+    text-decoration: none;
+    color: black;
+    font-family: 'Founder Grotesk', 'sans-serif';
+    background-color: white;
+    border: 2px solid $c_marine;
+    box-shadow: -4px 3px 0px $c_marine;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+  &__p{
+    margin-top: 0.5rem;
+  }
+
+  &__fleche {
+    width: 5vw;
+    height: auto;
+  }
+
+  &__patrick {
+    align-self: flex-start;
+  }
+
+  &__task {
+    font-family: 'Founder Grotesk', 'sans-serif';
+    font-size: 2rem;
+    align-self: flex-start;
+  }
+
+  &__taskCount {
+    color: red;
+  }
+
+  &__nextTask {
+    background-color: $c_pastelle;
+    border: 2px solid $c_marine;
+    box-shadow: -10px 10px 0px $c_marine;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 2rem;
+    border-radius: 1.6rem;
+  }
+
+  &__nextTaskTitle{
+    font-family: 'Founder Grotesk', 'sans-serif';
+    font-size: $fs24;
+  }
+
+  &__infosTask{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.6rem;
+    font-family: 'Paris', 'sans-serif';
+  }
+}
