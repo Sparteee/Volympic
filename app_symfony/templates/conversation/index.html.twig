@@ -4,13 +4,19 @@
 
 {% block body %}
     <div class="conversation-page">
-        <h1 class="conversation-page__title">Groupes de discussions</h1>
+        <h1 class="conversation-page__title">Groupes de discussion</h1>
         <ul class="conversations">
             {% for conv in conversations %}
                 <li class="conversations__elem">
-                    <a class="conversations__link" href="{{ path('app_conversation_single', { conv_id: conv.id }) }}">
-                        {{ conv.name }}
-                    </a>
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="25" fill="#D9D9D9"/>
+                    </svg>
+                    <div class="conversations__content">
+                        <a class="conversations__link" href="{{ path('app_conversation_single', { conv_id: conv.id }) }}">
+                            {{ conv.name }}
+                        </a>
+                        <p class="conversations__message">Quelqu'un: Blabla bla</p>
+                    </div>
                 </li>
             {% endfor %}
         </ul>

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3d6a8f1-a3b5-4f41-9383-ceabf69ce0f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app_symfony/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app_symfony/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_symfony/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app_symfony/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_symfony/src/Repository/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app_symfony/src/Repository/TaskRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_symfony/assets/images/ImgConversation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_symfony/assets/styles/_conversations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app_symfony/assets/styles/_conversations.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_symfony/templates/conversation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app_symfony/templates/conversation/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,8 +128,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "page/list-task",
-    "last_opened_file_path": "//wsl$/Debian/home/arthurja/devPhpLP/projets/evalsymfonylp2023",
+    "git-widget-placeholder": "style/conversations",
+    "last_opened_file_path": "//wsl$/Debian/home/arthurja/hackathonsf/app_symfony/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -142,6 +143,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Debian\home\arthurja\hackathonsf\app_symfony\assets\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
