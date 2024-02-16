@@ -9,12 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'app_tasks')]
-    public function index(#[CurrentUser] User $user, TaskRepository $tr,EntityManagerInterface $em): Response
+    public function index(TaskRepository $tr,EntityManagerInterface $em): Response
     {
         $range = "";
         if (isset($_POST['maxRange'])) {
@@ -24,6 +23,7 @@ class TaskController extends AbstractController
         // recupere toutes les taches
         $tasks = $tr->findAll();
         // Recuperer l'adresse de l'utilisateur connecté
+        $user = $this->getUser();
         $address = $user->getAddress();
         $addressLat = $address->getLatitude();
         $addressLong = $address->getLongitude();
@@ -40,10 +40,10 @@ class TaskController extends AbstractController
                 $task = $tr->find($task_id);
                 $task->addUser($user);
                 $em->persist($task);
-
-                $user->addConversation($task->getConversation());
-                $em->persist($user);
                 $em->flush();
+
+
+
             }
             $taskLat = $task->getAddress()->getLatitude();
             $taskLong = $task->getAddress()->getLongitude();
