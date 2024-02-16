@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ '' }}{% endblock %}
+
+{% block body %}
+    <div class="map-container">
+    <h1 class="map__title">Carte</h1>
+    <div id="map" style="height: 550px;" class="map"></div>
+    </div>
+    <script defer>
+        var iconPerso = L.icon({
+            iconUrl: '{{ asset('marker.svg') }}',
+            iconSize: [611/10, 884/10],
+            iconAnchor: [(611/10)/2, 884/10],
+            popupAnchor: [-15, -85],
+            shadowSize: [41, 41]
+        });
+        var markerResto = L.icon({
+            iconUrl: '{{ asset('markerResto.png') }}',
+            iconSize: [499/7, 499/7],
+            iconAnchor: [(499/7)/2, 499/7],
+            popupAnchor: [-5, -50],
+            shadowSize: [41, 41]
+        });
+        const latlng = [{{ addresslat }}, {{ addresslong }}];
+        var mymap = L.map('map').setView(latlng, 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(mymap);
+        var marker = L.marker(latlng, {icon: iconPerso}).addTo(mymap);
+        marker.bindPopup("<b>{{ address.address }}</b>")
+        var listRestos = fetch("https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/restaurants-casvp/records?limit=100")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                data.results.forEach(resto => {
+                    if(!resto.tt){
+                        return;
+                    }
+                    var marker = L.marker([resto.tt.lat, resto.tt.lon], {icon:markerResto}).addTo(mymap);
+                    marker.bindPopup("<b>" + resto.nom_restaurant + "</b><br>" + resto.adresse + "<br>" + resto.code + " " + resto.ville);
+                });
+            });
+
+
+
+
+    </script>
+    <style>
+
+        .leaflet-popup-content-wrapper {
+            background: #00084D;
+            color: white;
+            padding: 1.3rem 1rem 1rem 1rem;
+            border-radius: 2rem;
+            width: 100%;
+        }
+
+        .leaflet-popup-content-wrapper .leaflet-popup-content {
+            font-size: 1.6rem;
+            font-family: "Founder Grotesk", sans-serif;
+            color: white;
+        }
+
+        .leaflet-popup-tip {
+            background: #00084D;
+            color: white;        }
+
+    </style>
+{% endblock %}

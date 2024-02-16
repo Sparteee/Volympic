@@ -151,3 +151,22 @@
 
   }
 }
+
+.icone__carte {
+  fill: white;
+  font-family: Paris, sans-serif;
+  margin-right: 1rem;
+  width: 10%;
+
+}
+.icone__lien{
+  border-radius: 999rem;
+  border : 2px solid $c_marine;
+  background-color: $c_rouge;
+  padding: 1rem 2rem;
+  box-shadow: -2px 2px 0px $c_marine;
+  display: flex;
+    align-items: center;
+  width: 80%;
+  justify-content: flex-start;
+}

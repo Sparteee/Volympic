@@ -92,4 +92,18 @@ class TaskController extends AbstractController
 
         return $angle * $earthRadius;
     }
+
+    #[Route("/tasks/{id}/map", name: "app_map")]
+    public function map($id, TaskRepository $tr): Response
+    {
+        $task = $tr->find($id);
+        $address = $task->getAddress();
+        $addressLat = $address->getLatitude();
+        $addressLong = $address->getLongitude();
+        return $this->render('tasks/map.html.twig', [
+            "address" => $address,
+            "addresslat" => $addressLat,
+            "addresslong" => $addressLong,
+        ]);
+    }
 }
