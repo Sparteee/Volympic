@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Random\RandomException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +16,12 @@ class IndexController extends AbstractController
     {
         $currentUser = $this->getUser();
         $taskCount = count($currentUser->getTasks());
+        $task = $currentUser->getTasks()[0];
 
         return $this->render('homepage/homepage.html.twig', [
             'user' => $currentUser,
             'taskCount' => $taskCount,
+            'task' => $task
         ]);
     }
 
@@ -60,6 +63,18 @@ class IndexController extends AbstractController
             'arrayTaskFutur' => $arrayTaskFutur,
             'today' => $today,
             'tasks' => $tasks
+        ]);
+    }
+
+    /**
+     * @throws RandomException
+     */
+    #[Route('/random', name: 'app_random')]
+    public function random(): Response
+    {
+
+        return $this->render('homepage/random.html.twig', [
+            'random' => random_int(0, 50)
         ]);
     }
 }

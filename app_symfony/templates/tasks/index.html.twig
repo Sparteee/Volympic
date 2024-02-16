@@ -19,7 +19,10 @@
     <div class="example-wrapper">
         {% for task in tasks %}
             <div>{{ task.name }}</div>
-
+            <form method="post" action="{{ path('app_tasks') }}">
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <button type="submit" name="participer">Participer</button>
+            </form>
         {% endfor %}
 
     </div>

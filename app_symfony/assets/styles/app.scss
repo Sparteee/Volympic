@@ -2,17 +2,55 @@
 @import "vars";
 @import "navbar";
 
-* , *::before, *::after{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@import "profile";
+@import "form";
+@import "homepage";
+@import "conversations";
+@import "chat";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
+
 body {
-    font-size: $fs14;
-    background-color: lightgrey;
+  font-size: $fs14;
+  background: url('../images/background_volympic.svg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+
+.random {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+
+  &__title {
+    font-size: $fs32;
+    font-family: "Paris", sans-serif;
+    color: $c_marine;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    &--bold {
+      font-family: "Paris Semi Bold", sans-serif;
+    }
+  }
 }
