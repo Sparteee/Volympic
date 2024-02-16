@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Controller;
+
 use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Task;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 
 class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'app_tasks')]
-    public function index(TaskRepository $tr): Response
+    public function index(TaskRepository $tr,EntityManagerInterface $em): Response
     {
         $range = "";
-        if(isset($_POST['maxRange'])){
+        if (isset($_POST['maxRange'])) {
             $range = $_POST['maxRange'];
         }
 
@@ -32,8 +34,17 @@ class TaskController extends AbstractController
 //        $tasksLong = [];
 //        $tasksLat = [];
         $distances = [];
-        foreach ($tasks as $task){
+        foreach ($tasks as $task) {
+            if (isset($_POST['participer'])) {
+                $task_id= $_POST['task_id'];
+                $task = $tr->find($task_id);
+                $task->addUser($user);
+                $em->persist($task);
+                $em->flush();
 
+
+
+            }
             $taskLat = $task->getAddress()->getLatitude();
             $taskLong = $task->getAddress()->getLongitude();
             //debug
@@ -41,28 +52,32 @@ class TaskController extends AbstractController
 //            $tasksLat[] = $taskLat;
             $distance = $this->getDistance($addressLat, $addressLong, $taskLat, $taskLong);
             $distances[] = $distance;
-            if ($distance < $range){
-                // $distances[] = $distance;
-                if($task->getEndDate() > new \DateTime('now')){
-                    $taskssorted[] = $task;
-                }
-            } elseif ($range == ""){
-                if($task->getEndDate() > new \DateTime('now')){
-                    $taskssorted[] = $task;
+            if (!$task->getUsers()->contains($user)) {
+                if ($distance < $range) {
+                    // $distances[] = $distance;
+                    if ($task->getEndDate() > new \DateTime('now')) {
+                        $taskssorted[] = $task;
+                    }
+                } elseif ($range == "") {
+                    if ($task->getEndDate() > new \DateTime('now')) {
+                        $taskssorted[] = $task;
+                    }
                 }
             }
+
 
         }
         return $this->render('tasks/index.html.twig', [
             "address" => $address,
             'tasks' => $taskssorted,
-           /* 'distances' => $distances, //debug
-            "addresslat" => $addressLat,
-            "addresslong" => $addressLong,
-            "tasksLat" => $tasksLat,
-            "tasksLong" => $tasksLong*/
+            /* 'distances' => $distances, //debug
+             "addresslat" => $addressLat,
+             "addresslong" => $addressLong,
+             "tasksLat" => $tasksLat,
+             "tasksLong" => $tasksLong*/
         ]);
     }
+
     public function getDistance($addressLat, $addressLong, $taskLat, $taskLong): float|int
     {
         $earthRadius = 6371;

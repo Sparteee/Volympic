@@ -1,5 +1,8 @@
 @import "reset";
 @import "vars";
+@import "profile";
+@import "form";
+@import "homepage";
 
 @import "conversations";
 
@@ -13,6 +16,7 @@
 html {
     font-size: 62.5%;
 }
+
 
 body {
     font-size: $fs14;

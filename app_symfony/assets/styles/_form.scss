@@ -1,0 +1,68 @@
+@import "vars";
+
+.container-form {
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: #E4F0FE;
+  width: 85%;
+  margin: 0 auto;
+  padding: 4rem;
+  border-radius: $mp_16;
+  border: 2px solid $c_marine;
+  box-shadow: -4px 4px 0px 0px $c_marine;
+
+  &__input {
+    padding: .8rem $mp_24;
+    border: 3px solid $c_marine;
+    border-radius: $mp_16;
+    background-color: white;
+    font-size: $fs16;
+    width: 100%;
+    font-family: "Paris", sans-serif;
+  }
+
+  &__file {
+    visibility: hidden;
+    position: absolute;
+
+    &-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  &__label {
+    text-align: center;
+    font-size: 7rem;
+    font-family: "Paris", sans-serif;
+    color: $c_marine;
+    width: 10rem;
+    height: 10rem;
+    background-color: white;
+    border-radius: 999rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $c_marine;
+    box-shadow: -3px 3px 0px 0px $c_marine;
+  }
+
+  &__btn {
+    background-color: white;
+    border: 3px solid $c_marine;
+    padding: 0.5rem 3rem;
+    border-radius: 5rem;
+
+  }
+}
