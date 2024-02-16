@@ -32,10 +32,23 @@
             console.log(data)
 
             const feedEl = document.querySelector("#feed");
-            const template = document.querySelector('#new-message-template');
-            const newMessage = template.content.cloneNode(true);
+            const templateCurrentUser = document.querySelector('#new-message-template-current-user');
+            const templateOtherUser = document.querySelector('#new-message-template-other-user');
+
+            let newMessage;
+            const isFromCurrentUser = data.user.id === {{ user.id }};
+            if (isFromCurrentUser) {
+                newMessage = templateCurrentUser.content.cloneNode(true);
+            } else {
+                newMessage = templateOtherUser.content.cloneNode(true);
+            }
+
             const msgContent = newMessage.querySelector('.discussion-message__content');
             msgContent.textContent = data.content;
+
+            const userMsg = newMessage.querySelector('.discussion-message__author');
+            userMsg.textContent = isFromCurrentUser ? 'Vous' : `${data.user.lastname} ${data.user.firstname}`
+
             const msgTime = newMessage.querySelector('.discussion-message__time');
 
             const timestamp = new Date(data.timestamp);
@@ -100,7 +113,7 @@
 
             </div>
 
-            <template id="new-message-template">
+            <template id="new-message-template-current-user">
                 <article class="discussion-message" data-user-id="{{ user.id }}">
                     <p class="discussion-message__author discussion-message__author--me">Vous</p>
                     <div class="discussion-content discussion-content--me ">
@@ -111,6 +124,20 @@
                     </div>
                     <time class="discussion-message__time discussion-message__time--me"
                           datetime=""></time>
+                </article>
+            </template>
+
+            <template id="new-message-template-other-user">
+                <article class="discussion-message" data-user-id="">
+                    <p class="discussion-message__author"></p>
+                    <div class="discussion-content">
+                        <img class="discussion-message__avatar"
+                             src="{{ asset('uploads/profile/' ~ user.picture) }}"
+                             alt="">
+                        <p class="discussion-message__content"></p>
+
+                    </div>
+                    <time class="discussion-message__time" datetime=""></time>
                 </article>
             </template>
 
