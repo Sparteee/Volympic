@@ -1,11 +1,11 @@
-# Hackathon Symfony - LP MIAW
+# Volympic - Hackathon Symfony - LP MIAW
 
 ## Contexte
 Le **thème** de cette année 2024 est : **les jeux olympiques !**
 
 ![JO Paris 2024](images/LogoJOParis2024.svg)
 
-Vous développerez une application utile pour au moins une de ces catégories :
+L'équipe devait déveloper une application utile pour au moins une de ces catégories :
 - les athlètes 
 - les organisateurs
 - les visiteurs
@@ -13,11 +13,38 @@ Vous développerez une application utile pour au moins une de ces catégories :
 - une épreuve
 - ...
 
+Volympic a choisi les bénévoles !
 
-Imaginez l'application ultime des JO !
+**Et tout ça en moins de 30h !**
 
-## Installation sur votre poste
+## Objectifs
 
+L'objectif principal de Volympic est de faciliter la gestion et la communication des bénévoles impliqués dans les Jeux Olympiques de Paris 2024. Cette application révolutionnaire offre aux bénévoles la possibilité de sélectionner les tâches qui correspondent à leurs intérêts et compétences, simplifiant ainsi le processus d'inscription.
+
+Dès qu'un bénévole s'engage pour une tâche spécifique, il est automatiquement intégré dans une conversation avec les autres bénévoles affectés à la même mission. Cette fonctionnalité favorise la collaboration et permet aux bénévoles de coordonner leurs efforts de manière efficace et harmonieuse.
+
+En outre, Volympic offre à ses utilisateurs un accès privilégié à une carte interactive qui répertorie les restaurants affiliés à proximité de leur lieu de mission. Cette fonctionnalité pratique garantit aux bénévoles un accès facile à des options de restauration de qualité, optimisant ainsi leur expérience globale pendant les Jeux Olympiques.
+
+Grâce à Volympic, l'expérience des bénévoles aux Jeux Olympiques de Paris 2024 est non seulement simplifiée, mais aussi enrichie par des outils de communication et des services pratiques, contribuant ainsi au succès global de l'événement.
+
+## Ajouts possibles
+ - Version desktop pas optimisé
+ - Amélioration de la messagerie instantanée
+ - Espace administrateur pour pouvoir avoir une gestion globale du site
+ - Système de tags pour que les bénévoles voient des tâches qui leur correspondent
+ - Notification
+ - Générateur de QR Code chaque jour pour panier repas des bénévoles
+
+
+## Technologies utilisés : 
+   - Symfony
+   - Twig
+   - SCSS/SASS
+   - Docker
+   - [Mercure](https://symfony.com/components/Mercure)
+   - [LeafletJS](https://leafletjs.com/)
+
+## Installation
 - Pré-requis :
    - Avoir Docker
    - WSL si vous êtes sur Windows
@@ -39,23 +66,14 @@ exit
 # permet de créer les fichiers nécessaires au front
 make dev
 ```
-## Utilisation de Sass
 
-Sass est déjà installé dans ce projet à l'aide de [Webpack Encore](https://symfony.com/doc/6.4/frontend/encore/index.html).
+## Auteurs
 
-Pour utiliser Sass, il suffit de faire la commande suivante pour compiler les assets :
-
-```shell
-# lance la compilation et attend les modifications (à faire dans un terminal à part)
-make watch
-```
-
-Le fichier assets/styles/app.scss sert de point d'entrée. Les autres fichiers sont à placer dans le même dossier.
-
-## Composant additionnel présent dans le compose.yaml
-
-### Mercure
-
-Ce composant permet d'envoyer des messages asynchrones à travers un hub pour gérer par exemple un chat, des alertes...
-
-http://localhost:3000
+ - [Johan MORGA](https://github.com/JohanMorga) - Développement
+ - [Sean REYBOZ](https://github.com/SeanReyboz/) - Développement
+ - [Raphaël VICTOR](https://github.com/Sparteee) - Développement
+ - Arthur JARRIAU - Développement - Chef de projet
+ - Bastien Joly - Développement
+ - Margot BODIER - Design - Communication
+ - [Valentin TOUZINAUD](https://github.com/ValentinTouzinaud) - Design - Communication
+ - William Camilleri - Design - Communication
