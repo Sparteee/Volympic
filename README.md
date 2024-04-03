@@ -13,7 +13,28 @@ L'équipe devait déveloper une application utile pour au moins une de ces caté
 - une épreuve
 - ...
 
+Volympic a choisi les bénévoles !
+
 **Et tout ça en moins de 30h !**
+
+## Objectifs
+
+L'objectif principal de Volympic est de faciliter la gestion et la communication des bénévoles impliqués dans les Jeux Olympiques de Paris 2024. Cette application révolutionnaire offre aux bénévoles la possibilité de sélectionner les tâches qui correspondent à leurs intérêts et compétences, simplifiant ainsi le processus d'inscription.
+
+Dès qu'un bénévole s'engage pour une tâche spécifique, il est automatiquement intégré dans une conversation avec les autres bénévoles affectés à la même mission. Cette fonctionnalité favorise la collaboration et permet aux bénévoles de coordonner leurs efforts de manière efficace et harmonieuse.
+
+En outre, Volympic offre à ses utilisateurs un accès privilégié à une carte interactive qui répertorie les restaurants affiliés à proximité de leur lieu de mission. Cette fonctionnalité pratique garantit aux bénévoles un accès facile à des options de restauration de qualité, optimisant ainsi leur expérience globale pendant les Jeux Olympiques.
+
+Grâce à Volympic, l'expérience des bénévoles aux Jeux Olympiques de Paris 2024 est non seulement simplifiée, mais aussi enrichie par des outils de communication et des services pratiques, contribuant ainsi au succès global de l'événement.
+
+
+## Technologies utilisés : 
+   - Symfony
+   - Twig
+   - SCSS/SASS
+   - Docker
+   - [Mercure](https://symfony.com/components/Mercure)
+   - [LeafletJS](https://leafletjs.com/)
 
 ## Installation
 - Pré-requis :
@@ -37,26 +58,6 @@ exit
 # permet de créer les fichiers nécessaires au front
 make dev
 ```
-## Utilisation de Sass
-
-Sass est déjà installé dans ce projet à l'aide de [Webpack Encore](https://symfony.com/doc/6.4/frontend/encore/index.html).
-
-Pour utiliser Sass, il suffit de faire la commande suivante pour compiler les assets :
-
-```shell
-# lance la compilation et attend les modifications (à faire dans un terminal à part)
-make watch
-```
-
-Le fichier assets/styles/app.scss sert de point d'entrée. Les autres fichiers sont à placer dans le même dossier.
-
-## Composant additionnel présent dans le compose.yaml
-
-### Mercure
-
-Ce composant permet d'envoyer des messages asynchrones à travers un hub pour gérer par exemple un chat, des alertes...
-
-http://localhost:3000
 
 ## Auteurs
 
