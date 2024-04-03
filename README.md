@@ -27,6 +27,14 @@ En outre, Volympic offre à ses utilisateurs un accès privilégié à une carte
 
 Grâce à Volympic, l'expérience des bénévoles aux Jeux Olympiques de Paris 2024 est non seulement simplifiée, mais aussi enrichie par des outils de communication et des services pratiques, contribuant ainsi au succès global de l'événement.
 
+## Ajouts possibles
+ - Version desktop pas optimisé
+ - Amélioration de la messagerie instantanée
+ - Espace administrateur pour pouvoir avoir une gestion globale du site
+ - Système de tags pour que les bénévoles voient des tâches qui leur correspondent
+ - Notification
+ - Générateur de QR Code chaque jour pour panier repas des bénévoles
+
 
 ## Technologies utilisés : 
    - Symfony
