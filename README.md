@@ -59,3 +59,12 @@ Ce composant permet d'envoyer des messages asynchrones à travers un hub pour g�
 http://localhost:3000
 
 ## Auteurs
+
+ - [Johan MORGA](https://github.com/JohanMorga) - Développement
+ - [Sean REYBOZ](https://github.com/SeanReyboz/) - Développement
+ - [Raphaël VICTOR](https://github.com/Sparteee) - Développement
+ - Arthur JARRIAU - Développement
+ - Bastien Joly - Développement
+ - Margot BODIER - Design
+ - [Valentin TOUZINAUD](https://github.com/ValentinTouzinaud) - Design
+ - William Camilleri - Design
