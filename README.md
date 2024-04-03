@@ -5,7 +5,7 @@ Le **thème** de cette année 2024 est : **les jeux olympiques !**
 
 ![JO Paris 2024](images/LogoJOParis2024.svg)
 
-Vous développerez une application utile pour au moins une de ces catégories :
+L'équipe devait déveloper une application utile pour au moins une de ces catégories :
 - les athlètes 
 - les organisateurs
 - les visiteurs
@@ -13,11 +13,9 @@ Vous développerez une application utile pour au moins une de ces catégories :
 - une épreuve
 - ...
 
+**Et tout ça en moins de 30h !**
 
-Imaginez l'application ultime des JO !
-
-## Installation sur votre poste
-
+## Installation
 - Pré-requis :
    - Avoir Docker
    - WSL si vous êtes sur Windows
@@ -59,3 +57,5 @@ Le fichier assets/styles/app.scss sert de point d'entrée. Les autres fichiers s
 Ce composant permet d'envoyer des messages asynchrones à travers un hub pour gérer par exemple un chat, des alertes...
 
 http://localhost:3000
+
+## Auteurs
