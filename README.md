@@ -18,10 +18,14 @@ Imaginez l'application ultime des JO !
 
 ## Installation sur votre poste
 
-```shell
-git clone https://gitlab.univ-lr.fr/hackathon2024/symfony/nom_equipe/stack-symfony.git hackahtonsf
+- Pré-requis :
+   - Avoir Docker
+   - WSL si vous êtes sur Windows
 
-cd hackathonsf
+```shell
+git clone git@github.com:Sparteee/Volympic.git volympic
+
+cd volympic
 make build
 make up
 # permet d'ajouter les dépendances php et node pour le sass
