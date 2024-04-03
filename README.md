@@ -65,6 +65,6 @@ http://localhost:3000
  - [Raphaël VICTOR](https://github.com/Sparteee) - Développement
  - Arthur JARRIAU - Développement
  - Bastien Joly - Développement
- - Margot BODIER - Design
- - [Valentin TOUZINAUD](https://github.com/ValentinTouzinaud) - Design
- - William Camilleri - Design
+ - Margot BODIER - Design - Communication
+ - [Valentin TOUZINAUD](https://github.com/ValentinTouzinaud) - Design - Communication
+ - William Camilleri - Design - Communication
