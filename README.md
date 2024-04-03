@@ -1,4 +1,4 @@
-# Hackathon Symfony - LP MIAW
+# Volympic - Hackathon Symfony - LP MIAW
 
 ## Contexte
 Le **thème** de cette année 2024 est : **les jeux olympiques !**
