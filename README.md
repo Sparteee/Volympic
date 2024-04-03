@@ -63,7 +63,7 @@ http://localhost:3000
  - [Johan MORGA](https://github.com/JohanMorga) - Développement
  - [Sean REYBOZ](https://github.com/SeanReyboz/) - Développement
  - [Raphaël VICTOR](https://github.com/Sparteee) - Développement
- - Arthur JARRIAU - Développement
+ - Arthur JARRIAU - Développement - Chef de projet
  - Bastien Joly - Développement
  - Margot BODIER - Design - Communication
  - [Valentin TOUZINAUD](https://github.com/ValentinTouzinaud) - Design - Communication
