@@ -1,4 +1,4 @@
-# Volympic - Hackathon Symfony - LP MIAW
+# Volympic - Hackathon Symfony 2024 - LP MIAW
 
 ![Poster Volympic](images/posterVolympic.png)
 
